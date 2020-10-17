@@ -5,7 +5,34 @@
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorAccent">@color/colorPrimaryDark</item>
     </style>
+
+    <style name="Splash" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:windowBackground">@drawable/splash</item>
+    </style>
+
+    <style name="ToolbarTheme" parent="ThemeOverlay.AppCompat.Light">
+        <item name="android:fontFamily">@font/poppinsbold</item>
+    </style>
+
+    <style name="DarkBoldText" parent="TextAppearance.AppCompat">
+        <item name="android:fontFamily">@font/poppinsbold</item>
+        <item name="android:textSize">@dimen/_24ssp</item>
+        <item name="android:textColor">@color/colorPrimaryDark</item>
+    </style>
+
+    <style name="DarkMedText" parent="TextAppearance.AppCompat">
+        <item name="android:fontFamily">@font/poppinsmedium</item>
+        <item name="android:textSize">@dimen/_18ssp</item>
+        <item name="android:textColor">@color/colorPrimaryDark</item>
+    </style>
+
+    <style name="DarkRegText" parent="TextAppearance.AppCompat">
+        <item name="android:fontFamily">@font/poppinsregular</item>
+        <item name="android:textSize">@dimen/_14ssp</item>
+        <item name="android:textColor">@color/colorPrimaryDark</item>
+    </style>
+
 
 </resources>
