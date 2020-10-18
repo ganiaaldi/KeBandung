@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">KeBandung</string>
+    <string name="btn_next">Lanjut</string>
+    <string name="btn_skip">Lewati</string>
+    <string name="title_one_fungsionalitas">Fungsionalitas</string>
+    <string name="desc_one">KeBandung merupakan aplikasi yang berfungsi untuk para pariwisatawan yang hendak berlibur ke
+        Kota Bandung.
+    </string>
 </resources>

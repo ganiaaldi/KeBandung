@@ -9,8 +9,11 @@
             android:roundIcon="@drawable/icon"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".SplashScreen"
-                  android:theme="@style/Splash">
+        <activity android:name=".SlideScreen">
+        </activity>
+        <activity
+                android:name=".SplashScreen"
+                android:theme="@style/Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
