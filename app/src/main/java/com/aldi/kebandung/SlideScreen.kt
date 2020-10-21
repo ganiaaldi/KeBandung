@@ -20,6 +20,7 @@ import com.aldi.kebandung.MainActivity
 import com.aldi.kebandung.R
 import kotlinx.android.synthetic.main.activity_slide_screen.*
 import android.app.PendingIntent.getActivity
+import com.aldi.kebandung.auth.AuthActivity
 
 
 class SlideScreen : AppCompatActivity() {
@@ -58,7 +59,8 @@ class SlideScreen : AppCompatActivity() {
         slideView!!.adapter = myViewPagerAdapter
         slideView!!.addOnPageChangeListener(viewPagerPageChangeListener)
 
-        btn_skip!!.setOnClickListener { launchHomeScreen() }
+        btn_skip!!.setOnClickListener { //launchHomeScreen()
+           launchAuthScreen() }
 
         btn_next!!.setOnClickListener(View.OnClickListener {
             // checking for last page & if last page home screen will be launched
@@ -67,7 +69,8 @@ class SlideScreen : AppCompatActivity() {
                 // move to next screen
                 slideView!!.currentItem = current
             } else {
-                launchHomeScreen()
+                // launchHomeScreen()
+                launchAuthScreen()
             }
         })
     }
@@ -96,8 +99,11 @@ class SlideScreen : AppCompatActivity() {
     private fun launchHomeScreen() {
         //    prefManager!!.setLaunched(true) //if want launch slide just for one time, change to false
         startActivity(Intent(this, MainActivity::class.java))
+    }
 
-
+    private fun launchAuthScreen() {
+        //    prefManager!!.setLaunched(true) //if want launch slide just for one time, change to false
+        startActivity(Intent(this, AuthActivity::class.java))
     }
 
 

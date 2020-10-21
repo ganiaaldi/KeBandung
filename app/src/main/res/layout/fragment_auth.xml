@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:context=".auth.AuthFragment"
+                android:background="@color/colorPrimary">
+
+    <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imgIcon"
+            android:layout_width="@dimen/_150sdp"
+            android:layout_height="@dimen/_150sdp"
+            android:src="@drawable/icon"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/_50sdp"
+    />
+    <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvAuth"
+            android:layout_below="@id/imgIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:text="@string/title_auth"
+            style="@style/DarkRegText"/>
+
+
+    <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnRegister"
+            android:layout_width="@dimen/_180sdp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvAuth"
+            android:background="@drawable/btn_white"
+            style="@style/DarkMedText"
+            android:text="@string/btn_register"
+            android:textAllCaps="false"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_centerHorizontal="true"
+    />
+    <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnLogin"
+            android:layout_width="@dimen/_180sdp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/btnRegister"
+            android:background="@drawable/btn_white"
+            style="@style/DarkMedText"
+            android:text="@string/btn_login"
+            android:textAllCaps="false"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:layout_centerHorizontal="true"
+    />
+
+    <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvOr"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/btnLogin"
+            style="@style/DarkRegText"
+            android:textAlignment="center"
+            android:text="@string/text_or"
+            android:alpha="0.4"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnLoginGuest"
+            android:layout_width="@dimen/_180sdp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvOr"
+            android:background="@drawable/btn_white"
+            style="@style/DarkMedText"
+            android:textSize="@dimen/_15ssp"
+            android:text="@string/btn_login_guest"
+            android:textAllCaps="false"
+            android:layout_centerHorizontal="true"
+    />
+</RelativeLayout>

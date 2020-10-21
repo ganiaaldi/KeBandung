@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" xmlns:app="http://schemas.android.com/apk/res-auto"
+        tools:context=".auth.RegisterFragment"
+        android:padding="@dimen/_10sdp">
+
+    <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/buttonBackk"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/ic_arrow_back"
+
+    />
+ <androidx.appcompat.widget.AppCompatTextView
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:id="@+id/tvRegister"
+         android:text="@string/text_createaccount"
+         android:layout_toRightOf="@id/buttonBackk"
+        style="@style/DarkMedText"
+ android:textAlignment="center"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_below="@+id/tvRegister"
+            android:hint="@string/email"
+            android:visibility="visible"
+            android:background="@null"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+        <androidx.appcompat.widget.AppCompatEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:focusableInTouchMode="true"
+                android:inputType="textEmailAddress"
+                android:textColor="@color/colorPrimaryDark"
+                android:textColorHint="@color/colorPrimaryGray"
+        />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textUsername"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_below="@+id/textEmail"
+            android:hint="@string/account_name"
+            android:visibility="visible"
+            android:background="@null"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+        <androidx.appcompat.widget.AppCompatEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:focusableInTouchMode="true"
+                android:inputType="text"
+                android:digits="abcdefghijklmnopqrstuvwxyz1234567890"
+                android:textColor="@color/colorPrimaryDark"
+                android:textColorHint="@color/colorPrimaryGray"
+        />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textUsernameFull"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_below="@+id/textUsername"
+            android:hint="@string/username_full"
+            android:visibility="visible"
+            android:background="@null"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+        <androidx.appcompat.widget.AppCompatEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:focusableInTouchMode="true"
+                android:inputType="text"
+                android:textColor="@color/colorPrimaryDark"
+                android:textColorHint="@color/colorPrimaryGray"
+        />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_below="@+id/textUsernameFull"
+            android:hint="@string/password"
+            android:visibility="visible"
+            android:background="@null"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            app:passwordToggleDrawable="@drawable/btn_password"
+            app:passwordToggleEnabled="true"
+            app:passwordToggleTint="@color/colorPrimaryGray">
+
+        <androidx.appcompat.widget.AppCompatEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:focusableInTouchMode="true"
+                android:inputType="textPassword"
+                android:textColor="@color/colorPrimaryDark"
+                android:textColorHint="@color/colorPrimaryGray"
+        />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textPasswordConfirmation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_below="@+id/textPassword"
+            android:hint="@string/password_confirmation"
+            android:visibility="visible"
+            android:background="@null"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            app:passwordToggleDrawable="@drawable/btn_password"
+            app:passwordToggleEnabled="true"
+            app:passwordToggleTint="@color/colorPrimaryGray">
+
+        <androidx.appcompat.widget.AppCompatEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:focusableInTouchMode="true"
+                android:inputType="textPassword"
+                android:textColor="@color/colorPrimaryDark"
+                android:textColorHint="@color/colorPrimaryGray"
+        />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnRegister"
+            android:layout_width="@dimen/_180sdp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textPasswordConfirmation"
+            android:background="@drawable/btn_white"
+            style="@style/DarkMedText"
+            android:text="@string/btn_register"
+            android:textAllCaps="false"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_centerHorizontal="true"
+    />
+</RelativeLayout>
