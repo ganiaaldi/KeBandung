@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-            android:id="@+id/firstMenuFragment"
+            android:id="@+id/homeFragment"
             android:icon="@drawable/ic_home"
             android:title="Beranda"
     />
     <item
-            android:id="@+id/secondMenuFragment"
+            android:id="@+id/destinationFragment"
             android:icon="@drawable/ic_destination"
             android:title="Destinasi" />
     <item
-            android:id="@+id/thirdMenuFragment"
+            android:id="@+id/accountFragment"
             android:icon="@drawable/ic_account"
             android:title="Akun" />
 </menu>
