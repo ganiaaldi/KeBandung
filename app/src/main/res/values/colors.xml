@@ -3,6 +3,5 @@
     <color name="colorPrimary">#FFFFFF</color>
     <color name="colorPrimaryDark">#2C2C2C</color>
     <color name="colorPrimaryGray">#E6E6E6</color>
-
-
+    <color name="colorPrimaryGrayDark">#BBBBBB</color>
 </resources>

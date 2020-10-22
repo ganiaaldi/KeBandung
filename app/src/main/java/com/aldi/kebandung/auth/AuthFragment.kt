@@ -37,7 +37,7 @@ class AuthFragment : Fragment() {
         }
 
         btnLoginGuest.setOnClickListener {
-            findNavController().navigate(R.id.slideView)
+            findNavController().navigate(R.id.mainActivity)
         }
     }
 }
