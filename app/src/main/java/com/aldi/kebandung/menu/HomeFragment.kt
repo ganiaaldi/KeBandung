@@ -9,6 +9,7 @@ import android.view.ViewGroup
 
 import com.aldi.kebandung.R
 import com.aldi.kebandung.view.ChangeToolbarTitle
+import kotlinx.android.synthetic.main.fragment_home.*
 
 class HomeFragment : Fragment() {
 
@@ -25,5 +26,7 @@ class HomeFragment : Fragment() {
         (activity as ChangeToolbarTitle).showToolbar(true)
         (activity as ChangeToolbarTitle).updateTitle("Beranda")
     }
+
+
 
 }

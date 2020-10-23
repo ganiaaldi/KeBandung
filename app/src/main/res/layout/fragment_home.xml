@@ -1,14 +1,137 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
              xmlns:tools="http://schemas.android.com/tools"
              android:layout_width="match_parent"
              android:layout_height="match_parent"
-             tools:context=".menu.HomeFragment">
+             >
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="HomeFragment"/>
+ <RelativeLayout android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 tools:context=".menu.HomeFragment"
+                 android:background="@color/colorPrimary"
+ android:layout_margin="@dimen/_5sdp">
 
-</FrameLayout>
+     <androidx.appcompat.widget.AppCompatTextView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="Selamat Berlibur,"
+             style="@style/DarkMedTextSmall"
+             android:id="@+id/tvSelamatBerlibur"
+     />
+
+     <androidx.appcompat.widget.AppCompatTextView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_below="@id/tvSelamatBerlibur"
+             android:text="Di Kota Bandung!"
+             style="@style/DarkRegTextSmall"
+             android:id="@+id/tvUsername"
+     />
+
+     <androidx.appcompat.widget.AppCompatImageView
+             android:layout_width="@dimen/_50sdp"
+             android:layout_height="@dimen/_50sdp"
+             android:id="@+id/imgAvatar"
+             android:src="@drawable/asephappy"
+             android:layout_toRightOf="@id/tvSelamatBerlibur"
+             android:layout_toEndOf="@id/tvSelamatBerlibur"
+             android:layout_marginStart="@dimen/_15sdp"
+             android:layout_marginLeft="@dimen/_15sdp"/>
+
+     <androidx.appcompat.widget.AppCompatImageView
+             android:layout_width="@dimen/_50sdp"
+             android:layout_height="@dimen/_50sdp"
+             android:id="@+id/imgAvatar2"
+             android:src="@drawable/euishappy"
+             android:layout_toRightOf="@id/imgAvatar"
+             android:layout_toEndOf="@id/imgAvatar"
+             android:layout_marginStart="@dimen/_10sdp"
+             android:layout_marginLeft="@dimen/_10sdp"/>
+
+     <androidx.appcompat.widget.AppCompatTextView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="Destinasi Populer"
+             style="@style/DarkMedTextSmall"
+             android:id="@+id/tvPopuler"
+             android:layout_below="@id/tvUsername"
+             android:layout_marginTop="@dimen/_15sdp"
+     />
+
+     <androidx.recyclerview.widget.RecyclerView
+             android:id="@+id/rvPopuler"
+             android:layout_below="@id/tvPopuler"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:orientation="horizontal"
+             tools:listitem=""/>
+
+     <androidx.appcompat.widget.AppCompatTextView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="Rekomendasi Tempat Wisata"
+             style="@style/DarkMedTextSmall"
+             android:id="@+id/tvRekomendasi"
+             android:layout_below="@id/rvPopuler"
+             android:layout_marginTop="@dimen/_15sdp"
+     />
+
+     <androidx.recyclerview.widget.RecyclerView
+             android:id="@+id/rvRekomendasi"
+             android:layout_below="@id/tvRekomendasi"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:orientation="horizontal"
+             tools:listitem=""/>
+
+     <androidx.appcompat.widget.AppCompatTextView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="Promo Penginapan"
+             style="@style/DarkMedTextSmall"
+             android:id="@+id/tvPenginapan"
+             android:layout_below="@id/rvRekomendasi"
+             android:layout_marginTop="@dimen/_15sdp"
+     />
+
+     <androidx.recyclerview.widget.RecyclerView
+             android:id="@+id/rvPenginapan"
+             android:layout_below="@id/tvPenginapan"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:orientation="horizontal"
+             tools:listitem=""/>
+
+     <androidx.appcompat.widget.AppCompatTextView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="Tempat Kuliner Terdekat"
+             style="@style/DarkMedTextSmall"
+             android:id="@+id/tvKuliner"
+             android:layout_below="@id/rvPenginapan"
+             android:layout_marginTop="@dimen/_15sdp"
+     />
+
+     <androidx.recyclerview.widget.RecyclerView
+             android:id="@+id/rvKuliner"
+             android:layout_below="@id/tvKuliner"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:orientation="horizontal"
+             tools:listitem=""/>
+
+     <androidx.appcompat.widget.AppCompatButton
+             android:id="@+id/btnLoginGuest"
+             android:layout_width="@dimen/_180sdp"
+             android:layout_height="wrap_content"
+             android:layout_below="@id/rvKuliner"
+             android:background="@drawable/btn_white"
+             style="@style/DarkMedTextSmall"
+             android:layout_margin="@dimen/_10sdp"
+             android:textSize="@dimen/_15ssp"
+             android:text="Cek Destinasi Lain"
+             android:textAllCaps="false"
+             android:layout_centerHorizontal="true"
+     />
+ </RelativeLayout>
+</ScrollView>

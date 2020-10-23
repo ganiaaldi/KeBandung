@@ -22,8 +22,12 @@
                     android:layout_height="wrap_content"
                     android:ellipsize="end"
                     android:maxLines="1"
-                    style="@style/WhiteMedText"
-                    />
+                    style="@style/DarkWhiteText"
+                    android:textAlignment="center"
+                    android:paddingEnd="@dimen/_20sdp"
+                    android:paddingRight="@dimen/_20sdp"
+                    android:text="Toolbar"
+            />
 
         </RelativeLayout>
     </androidx.appcompat.widget.Toolbar>
