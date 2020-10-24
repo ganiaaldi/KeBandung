@@ -7,9 +7,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 
 import com.aldi.kebandung.R
 import com.aldi.kebandung.view.ChangeToolbarTitle
+import kotlinx.android.synthetic.main.fragment_account.*
 
 
 class AccountFragment : Fragment() {
@@ -27,5 +29,13 @@ class AccountFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         (activity as ChangeToolbarTitle).showToolbar(true)
         (activity as ChangeToolbarTitle).updateTitle("Akun")
+        buttonLogin()
+    }
+
+    fun buttonLogin(){
+        btnLogin.setOnClickListener {
+            findNavController().navigate(R.id.loginFragment2)
+            (activity as ChangeToolbarTitle).showToolbar(false)
+        }
     }
 }

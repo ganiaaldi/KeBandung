@@ -5,9 +5,15 @@
             app:startDestination="@id/homeFragment">
 
     <fragment android:id="@+id/homeFragment" android:name="com.aldi.kebandung.menu.HomeFragment"
-              android:label="fragment_home" tools:layout="@layout/fragment_home"/>
+              android:label="fragment_home" tools:layout="@layout/fragment_home">
+        <action android:id="@+id/action_homeFragment_to_destinationFragment" app:destination="@id/destinationFragment"/>
+    </fragment>
     <fragment android:id="@+id/accountFragment" android:name="com.aldi.kebandung.menu.AccountFragment"
-              android:label="fragment_account" tools:layout="@layout/fragment_account"/>
+              android:label="fragment_account" tools:layout="@layout/fragment_account">
+        <action android:id="@+id/action_accountFragment_to_loginFragment2" app:destination="@id/loginFragment2"/>
+    </fragment>
     <fragment android:id="@+id/destinationFragment" android:name="com.aldi.kebandung.menu.DestinationFragment"
               android:label="fragment_destination" tools:layout="@layout/fragment_destination"/>
+    <fragment android:id="@+id/loginFragment2" android:name="com.aldi.kebandung.auth.LoginFragment"
+              android:label="fragment_login" tools:layout="@layout/fragment_login"/>
 </navigation>

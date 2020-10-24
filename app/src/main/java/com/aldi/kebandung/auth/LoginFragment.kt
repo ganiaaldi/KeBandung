@@ -32,7 +32,11 @@ class LoginFragment : Fragment() {
 
     private fun loginButton() {
         btnLogin.setOnClickListener {
+            if(activity is AuthActivity){
             findNavController().navigate(R.id.mainActivity)
+        } else{
+                findNavController().navigateUp()
+            }
         }
     }
 }

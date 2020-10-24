@@ -1,14 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
              xmlns:tools="http://schemas.android.com/tools"
              android:layout_width="match_parent"
              android:layout_height="match_parent"
              tools:context=".menu.AccountFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="accountfragment"/>
+    <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="@dimen/_120sdp"
+            android:layout_height="@dimen/_120sdp"
+            android:id="@+id/imgAvatar"
+            android:src="@drawable/asepnormal"
+            android:layout_marginTop="@dimen/_100sdp"
+            android:layout_marginStart="@dimen/_25sdp"
+            android:layout_marginLeft="@dimen/_25sdp"/>
 
-</FrameLayout>
+    <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="@dimen/_120sdp"
+            android:layout_height="@dimen/_120sdp"
+            android:id="@+id/imgAvatar2"
+            android:src="@drawable/euisnormal"
+            android:layout_toRightOf="@id/imgAvatar"
+            android:layout_toEndOf="@id/imgAvatar"
+            android:layout_marginTop="@dimen/_100sdp"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginLeft="@dimen/_10sdp"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvHintMasuk"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/imgAvatar"
+            android:layout_marginTop="@dimen/_30sdp"
+            android:paddingLeft="@dimen/_10sdp"
+            android:paddingRight="@dimen/_10sdp"
+            android:text="Masuk menggunakan akun untuk mengakses berbagai fitur menarik lainnya!"
+            android:textAlignment="center"
+            style="@style/DarkRegText"
+    />
+
+    <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnLogin"
+            android:layout_width="@dimen/_180sdp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvHintMasuk"
+            android:background="@drawable/btn_white"
+            style="@style/DarkMedText"
+            android:text="@string/btn_login"
+            android:textAllCaps="false"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:layout_centerHorizontal="true"
+    />
+
+</RelativeLayout>

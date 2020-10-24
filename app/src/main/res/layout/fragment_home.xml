@@ -121,7 +121,7 @@
              tools:listitem=""/>
 
      <androidx.appcompat.widget.AppCompatButton
-             android:id="@+id/btnLoginGuest"
+             android:id="@+id/btnCheckDestination"
              android:layout_width="@dimen/_180sdp"
              android:layout_height="wrap_content"
              android:layout_below="@id/rvKuliner"

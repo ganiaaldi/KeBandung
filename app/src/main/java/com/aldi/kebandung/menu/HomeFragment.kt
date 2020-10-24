@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 
 import com.aldi.kebandung.R
 import com.aldi.kebandung.view.ChangeToolbarTitle
@@ -25,8 +26,14 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         (activity as ChangeToolbarTitle).showToolbar(true)
         (activity as ChangeToolbarTitle).updateTitle("Beranda")
+        buttonCheckDestination()
     }
 
+    fun buttonCheckDestination(){
+        btnCheckDestination.setOnClickListener {
+            findNavController().navigate(R.id.destinationFragment)
+        }
+    }
 
 
 }
