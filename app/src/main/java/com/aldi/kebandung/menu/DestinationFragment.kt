@@ -8,7 +8,9 @@ import android.view.View
 import android.view.ViewGroup
 
 import com.aldi.kebandung.R
+import com.aldi.kebandung.adapter.DestinationPagerAdapter
 import com.aldi.kebandung.view.ChangeToolbarTitle
+import kotlinx.android.synthetic.main.fragment_destination.*
 
 
 class DestinationFragment : Fragment() {
@@ -25,6 +27,10 @@ class DestinationFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         (activity as ChangeToolbarTitle).showToolbar(true)
         (activity as ChangeToolbarTitle).updateTitle("Destinasi")
+
+        val pagerAdapter = DestinationPagerAdapter(childFragmentManager)
+        destinationViewPager.adapter = pagerAdapter
+        destinationTabLayout.setupWithViewPager(destinationViewPager)
     }
 
 }
