@@ -7,13 +7,18 @@
     <fragment android:id="@+id/homeFragment" android:name="com.aldi.kebandung.menu.HomeFragment"
               android:label="fragment_home" tools:layout="@layout/fragment_home">
         <action android:id="@+id/action_homeFragment_to_destinationFragment" app:destination="@id/destinationFragment"/>
+        <action android:id="@+id/action_homeFragment_to_detailFragment" app:destination="@id/detailFragment"/>
     </fragment>
     <fragment android:id="@+id/accountFragment" android:name="com.aldi.kebandung.menu.AccountFragment"
               android:label="fragment_account" tools:layout="@layout/fragment_account">
         <action android:id="@+id/action_accountFragment_to_loginFragment2" app:destination="@id/loginFragment2"/>
     </fragment>
     <fragment android:id="@+id/destinationFragment" android:name="com.aldi.kebandung.menu.DestinationFragment"
-              android:label="fragment_destination" tools:layout="@layout/fragment_destination"/>
+              android:label="fragment_destination" tools:layout="@layout/fragment_destination">
+        <action android:id="@+id/action_destinationFragment_to_detailFragment" app:destination="@id/detailFragment"/>
+    </fragment>
     <fragment android:id="@+id/loginFragment2" android:name="com.aldi.kebandung.auth.LoginFragment"
               android:label="fragment_login" tools:layout="@layout/fragment_login"/>
+    <fragment android:id="@+id/detailFragment" android:name="com.aldi.kebandung.detail.DetailFragment"
+              android:label="fragment_detail" tools:layout="@layout/fragment_detail"/>
 </navigation>
