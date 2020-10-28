@@ -6,11 +6,19 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
+import android.widget.Toast
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 
 import com.aldi.kebandung.R
+import com.aldi.kebandung.adapter.BannerAdapter
+import com.aldi.kebandung.adapter.DummyAdapter
+import com.aldi.kebandung.data.dummyData
+import com.aldi.kebandung.model.Dummy
 import com.aldi.kebandung.view.ChangeToolbarTitle
 import kotlinx.android.synthetic.main.fragment_home.*
+import java.util.*
 
 class HomeFragment : Fragment() {
 
@@ -27,12 +35,55 @@ class HomeFragment : Fragment() {
         (activity as ChangeToolbarTitle).showToolbar(true)
         (activity as ChangeToolbarTitle).updateTitle("Beranda")
         buttonCheckDestination()
+        rvPopuler.apply{
+            layoutManager = LinearLayoutManager(activity, LinearLayout.HORIZONTAL, false)
+            adapter = DummyAdapter(dummyData.dummyData)
+            (adapter as DummyAdapter).setOnItemClickCallback(object : DummyAdapter.OnItemClickCallback {
+                override fun onItemClicked(data: Dummy) {
+                    showSelectedVacation(data)
+                }
+            })
+        }
+
+        rvRekomendasi.apply{
+            layoutManager = LinearLayoutManager(activity, LinearLayout.HORIZONTAL, false)
+            adapter = BannerAdapter(dummyData.dummyDataRekomendasi)
+            (adapter as BannerAdapter).setOnItemClickCallback(object : BannerAdapter.OnItemClickCallback {
+                override fun onItemClicked(data: Dummy) {
+                    showSelectedVacation(data)
+                }
+            })
+        }
+
+        rvPenginapan.apply{
+            layoutManager = LinearLayoutManager(activity, LinearLayout.HORIZONTAL, false)
+            adapter = BannerAdapter(dummyData.dummyDataHotel)
+            (adapter as BannerAdapter).setOnItemClickCallback(object : BannerAdapter.OnItemClickCallback {
+                override fun onItemClicked(data: Dummy) {
+                    showSelectedVacation(data)
+                }
+            })
+        }
+
+        rvKuliner.apply{
+            layoutManager = LinearLayoutManager(activity, LinearLayout.HORIZONTAL, false)
+            adapter = BannerAdapter(dummyData.dummyDataRestaurant)
+            (adapter as BannerAdapter).setOnItemClickCallback(object : BannerAdapter.OnItemClickCallback {
+                override fun onItemClicked(data: Dummy) {
+                    showSelectedVacation(data)
+                }
+            })
+        }
     }
 
     fun buttonCheckDestination(){
         btnCheckDestination.setOnClickListener {
             findNavController().navigate(R.id.destinationFragment)
         }
+    }
+
+    private fun showSelectedVacation(data: Dummy) {
+    Toast.makeText(context, " "+data.nameVacation, Toast.LENGTH_SHORT).show()
     }
 
 

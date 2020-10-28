@@ -16,6 +16,18 @@ object dummyData : ArrayList<Dummy>() {
             , R.drawable.tahura)
     )
 
+    val dummyDataRekomendasi = arrayListOf(
+        Dummy("Tebing Keraton","Bandung Barat",
+            "Ciburial, Cimenyan","Tebing Keraton Bandung tempat wisata cocok bagi pecinta alam yang dikelilingi perbukitan membuatnya jadi satu dari sekian kota yang spesial di Kota Bandung"
+            , R.drawable.tebingkeraton),
+        Dummy("Dago Dreampark","Bandung Barat",
+            "Jl. Dago Giri Km. 2.2 Mekarwangi","Dago Dreampark merupakan wisata kekinian di Kota Bandung dengan luas 13 hektar yang mengusung konsep Jawa - Sunda & Bali dengan dilengkapi berbagai fasilitas & wahana yang menarik."
+            , R.drawable.dagodreampark),
+        Dummy("Tahura Ir. H. Djuanda","Bandung Kota",
+            "Cimenyan","Taman Hutan Raya Ir. H. Djuanda (Tahura Djuanda) merupakan kawasan konservasi yang terpadu antara alam sekunder dengan hutan tanaman dengan jenis Pinus (Pinus merkusil) yang terletak di Sub-Daerah Aliran Sungai Cikapundung dan DAS Citarum yang membentang mulai dari Curug Dago, Dago Pakar sampai Curug Maribaya yang merupakan bagian dari kelompok hutan Gunung Pulosari."
+            , R.drawable.tahura)
+    )
+
     val dummyDataRestaurant = arrayListOf(
         Dummy("Sudirman Street Day and Night Market","Bandung Barat",
             "Jl. Jend. Sudirman No.107, Karanganyar"," "
