@@ -38,7 +38,7 @@
 
         <RelativeLayout
                 android:layout_marginTop="@dimen/_10sdp"
-                android:id="@+id/imgPromo"
+                android:id="@+id/imgDetail"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
@@ -49,7 +49,7 @@
                     android:layout_height="wrap_content">
 
                 <androidx.appcompat.widget.AppCompatImageView
-                        android:id="@+id/detail_promo"
+                        android:id="@+id/detail_destinasi"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_150sdp"
                         android:layout_marginTop="@dimen/_5sdp"
@@ -60,7 +60,7 @@
                 android:layout_marginTop="@dimen/_3sdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/imgPromo"
+                android:layout_below="@id/imgDetail"
                 android:id="@+id/layoutDetail">
 
 
@@ -71,6 +71,7 @@
                     style="@style/DarkMedText"
                     android:text="Nama Destinasi"
             />
+
             <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvLokasi"
                     android:layout_width="match_parent"
@@ -79,11 +80,12 @@
                     android:layout_below="@id/tvNamaDestinasi"
                     android:text="Lokasi Destinasi"
             />
+
             <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvLokasiDetail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    style="@style/DarkRegText"
+                    style="@style/DarkRegTextSmall"
                     android:layout_below="@id/tvLokasi"
                     android:text="Alamat Lengkap"
                     android:drawableStart="@drawable/ic_location"
@@ -93,17 +95,17 @@
 
         <androidx.appcompat.widget.AppCompatTextView
                 android:layout_height="match_parent"
-                android:layout_width="@dimen/_60sdp"
+                android:layout_width="wrap_content"
                 android:id="@+id/tvJam"
                 android:layout_below="@id/layoutDetail"
                 android:layout_marginTop="@dimen/_5sdp"
-                android:text="Jam Buka :"
+                android:text="Jam Buka : "
                 style="@style/DarkRegTextSmall"
         />
 
         <androidx.appcompat.widget.AppCompatTextView
                 android:layout_height="match_parent"
-                android:layout_width="@dimen/_90sdp"
+                android:layout_width="wrap_content"
                 android:id="@+id/tvJamm"
                 android:layout_below="@id/layoutDetail"
                 android:layout_toRightOf="@id/tvJam"
@@ -114,22 +116,19 @@
 
         <androidx.appcompat.widget.AppCompatTextView
                 android:layout_height="match_parent"
-                android:layout_width="@dimen/_65sdp"
+                android:layout_width="wrap_content"
                 android:id="@+id/tvTiket"
-                android:layout_below="@id/layoutDetail"
-                android:layout_marginTop="@dimen/_5sdp"
-                android:text="Tiket Masuk:"
+                android:layout_below="@id/tvJam"
+                android:text="Tiket Masuk: "
                 style="@style/DarkRegTextSmall"
-                android:layout_toRightOf="@id/tvJamm"
         />
 
         <androidx.appcompat.widget.AppCompatTextView
                 android:layout_height="match_parent"
-                android:layout_width="@dimen/_90sdp"
+                android:layout_width="wrap_content"
                 android:id="@+id/tvHarga"
-                android:layout_below="@id/layoutDetail"
+                android:layout_below="@id/tvJam"
                 android:layout_toRightOf="@id/tvTiket"
-                android:layout_marginTop="@dimen/_5sdp"
                 android:text="Rp. 15000"
                 style="@style/DarkRegTextSmall"
                 android:layout_toEndOf="@id/tvTiket"/>
@@ -160,7 +159,7 @@
                 android:layout_height="match_parent"
                 android:layout_width="match_parent"
                 android:id="@+id/tvKomentar"
-                android:layout_below="@id/tvDeskripsi"
+                android:layout_below="@id/tv_item_description"
                 android:layout_marginTop="@dimen/_15sdp"
                 android:text="Komentar"
                 style="@style/DarkRegText"

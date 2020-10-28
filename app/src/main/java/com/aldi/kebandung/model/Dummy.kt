@@ -5,5 +5,8 @@ data class Dummy (
     var kecamatanVacation: String = "",
     var alamatVacation : String = "",
     var detailVacation: String = "",
-    var photoVacation: Int = 0
+    var photoVacation: Int = 0,
+    var alamatLengkap : String = "",
+    var jamVacation : String = "",
+    var harga : Int = 0
 )

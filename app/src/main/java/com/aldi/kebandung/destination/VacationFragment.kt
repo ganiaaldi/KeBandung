@@ -9,11 +9,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.Toast
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 
 import com.aldi.kebandung.R
 import com.aldi.kebandung.adapter.DummyAdapter
 import com.aldi.kebandung.data.dummyData
+import com.aldi.kebandung.menu.DestinationFragmentDirections
 import com.aldi.kebandung.model.Dummy
 import kotlinx.android.synthetic.main.fragment_vacation.*
 import kotlinx.android.synthetic.main.item_dummy.*
@@ -45,6 +47,9 @@ class VacationFragment : Fragment() {
 
     private fun showSelectedVacation(data: Dummy) {
         Toast.makeText(context, " "+data.nameVacation,Toast.LENGTH_SHORT).show()
+        val args = DestinationFragmentDirections.actionDestinationFragmentToDetailFragment(data.nameVacation,data.kecamatanVacation
+            , data.alamatVacation, data.detailVacation, data.alamatLengkap, data.jamVacation, data.photoVacation, data.harga)
+        findNavController().navigate(args)
     }
 
 

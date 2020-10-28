@@ -84,6 +84,9 @@ class HomeFragment : Fragment() {
 
     private fun showSelectedVacation(data: Dummy) {
     Toast.makeText(context, " "+data.nameVacation, Toast.LENGTH_SHORT).show()
+        val args = HomeFragmentDirections.actionHomeFragmentToDetailFragment(data.nameVacation,data.kecamatanVacation
+        , data.alamatVacation, data.detailVacation, data.alamatLengkap, data.jamVacation, data.photoVacation, data.harga)
+        findNavController().navigate(args)
     }
 
 
