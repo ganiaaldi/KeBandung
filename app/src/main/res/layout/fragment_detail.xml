@@ -177,11 +177,12 @@
                 android:layout_width="match_parent"
                 android:id="@+id/tvMasuk"
                 android:layout_below="@id/rvComment"
-                android:layout_marginTop="@dimen/_15sdp"
-                android:text="Masuk untuk berkomentar"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:text="Masuk untuk berkomentar.."
                 style="@style/DarkRegTextSmall"
                 android:textColor="@color/colorPrimaryGrayDark"
-        />
+                android:layout_marginLeft="@dimen/_5sdp"/>
     </RelativeLayout>
 
 </ScrollView>

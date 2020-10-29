@@ -1,14 +1,20 @@
 package com.aldi.kebandung.detail
 
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 
 import com.aldi.kebandung.R
+import com.aldi.kebandung.adapter.CommentAdapter
+import com.aldi.kebandung.data.commentData
+import com.aldi.kebandung.model.Comment
 import kotlinx.android.synthetic.main.fragment_detail.*
 
 class DetailFragment : Fragment() {
@@ -30,6 +36,7 @@ class DetailFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_detail, container, false)
     }
 
+    @SuppressLint("WrongConstant")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupBackButton()
@@ -49,7 +56,18 @@ class DetailFragment : Fragment() {
         tv_item_description.text = detailDestinasi
         tvJamm.text = jamDestinasi
         tvHarga.text = hargaDestinasi.toString()
+
+        rvComment.apply{
+            layoutManager = LinearLayoutManager(activity, LinearLayout.VERTICAL, false)
+            adapter = CommentAdapter(commentData.commentData)
+            (adapter as CommentAdapter).setOnItemClickCallback(object : CommentAdapter.OnItemClickCallback {
+                override fun onItemClicked(data: Comment) {
+
+                }
+            })
+        }
     }
+
 
     private fun setupBackButton() {
         buttonBackk.setOnClickListener {
