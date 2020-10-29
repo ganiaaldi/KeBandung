@@ -26,7 +26,7 @@
             android:layout_above="@id/layoutDots"
             android:background="@color/colorPrimaryDark" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_next"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -36,7 +36,7 @@
             android:text="@string/btn_next"
             style="@style/DarkMedText" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_skip"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

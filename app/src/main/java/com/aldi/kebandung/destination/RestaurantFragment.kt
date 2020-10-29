@@ -2,6 +2,7 @@ package com.aldi.kebandung.destination
 
 
 import android.annotation.SuppressLint
+import android.content.res.ColorStateList
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -17,10 +18,14 @@ import com.aldi.kebandung.adapter.DummyAdapter
 import com.aldi.kebandung.data.dummyData
 import com.aldi.kebandung.menu.DestinationFragmentDirections
 import com.aldi.kebandung.model.Dummy
+import com.google.android.material.chip.Chip
+import com.google.android.material.chip.ChipDrawable
 import kotlinx.android.synthetic.main.fragment_restaurant.*
 
 
 class RestaurantFragment : Fragment() {
+
+    private lateinit var chipCategory: ArrayList<Int>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -42,8 +47,59 @@ class RestaurantFragment : Fragment() {
                 }
             })
         }
+        chipCategory = ArrayList()
+        val restaurantCategory = arrayOf(
+            "Keluarga",
+            "Fast Food",
+            "Seafood",
+            "Oleh - oleh",
+            "Coffe Shop",
+            "Casual Dining",
+            "Cafe",
+            "Korea food",
+            "Japan food",
+            "Western food",
+            "Rumah makan"
+        )
+
+        restaurantCategory.forEach { categoryName ->
+            val chip = generateChip(categoryName)
+
+            restaurantCategoryChip.addView(chip)
+        }
+
+        restaurantCategoryChip.check(chipCategory[0])
+
+        restaurantCategoryChip.isSingleSelection = true
+
+        restaurantCategoryChip.setOnCheckedChangeListener { chipGroup, i ->
+            val chip = chipGroup.findViewById<Chip>(i)
+
+            if (chip != null) {
+                Toast.makeText(context,"Kategori Tempat Kuliner : ${chip.text}",Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 
+    @SuppressLint("NewApi")
+    private fun generateChip(text: String): Chip {
+        val chip = Chip(activity)
+        chip.id = View.generateViewId()
+
+        chipCategory.add(chip.id)
+
+        val chipDrawable =
+            ChipDrawable.createFromAttributes(activity, null, 0, R.style.customChips)
+        chip.setChipDrawable(chipDrawable)
+        chip.setTextAppearanceResource(R.style.customChips)
+        chip.chipStrokeWidth =1f
+        chip.chipStrokeColor = ColorStateList.valueOf(resources.getColor(R.color.colorPrimaryGray))
+
+        chip.isClickable = true
+        chip.isCheckable = true
+        chip.text = text
+        return chip
+    }
     private fun showSelectedVacation(data: Dummy) {
         Toast.makeText(context, " "+data.nameVacation,Toast.LENGTH_SHORT).show()
         val args = DestinationFragmentDirections.actionDestinationFragmentToDetailFragment(data.nameVacation,data.kecamatanVacation

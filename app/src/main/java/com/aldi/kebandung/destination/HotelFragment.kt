@@ -2,6 +2,7 @@ package com.aldi.kebandung.destination
 
 
 import android.annotation.SuppressLint
+import android.content.res.ColorStateList
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -17,10 +18,14 @@ import com.aldi.kebandung.adapter.DummyAdapter
 import com.aldi.kebandung.data.dummyData
 import com.aldi.kebandung.menu.DestinationFragmentDirections
 import com.aldi.kebandung.model.Dummy
+import com.google.android.material.chip.Chip
+import com.google.android.material.chip.ChipDrawable
 import kotlinx.android.synthetic.main.fragment_hotel.*
 
 
 class HotelFragment : Fragment() {
+
+    private lateinit var chipCategory: ArrayList<Int>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -42,6 +47,52 @@ class HotelFragment : Fragment() {
                 }
             })
         }
+        chipCategory = ArrayList()
+        val hotelCategory = arrayOf(
+            "< 200.000",
+            "200.000 - 300.000",
+            "300.000 - 400.000",
+            "400.000 - 500.000",
+            "> 500.000"
+        )
+
+        hotelCategory.forEach { categoryName ->
+            val chip = generateChip(categoryName)
+
+            hotelCategoryChip.addView(chip)
+        }
+
+        hotelCategoryChip.check(chipCategory[0])
+
+        hotelCategoryChip.isSingleSelection = true
+
+        hotelCategoryChip.setOnCheckedChangeListener { chipGroup, i ->
+            val chip = chipGroup.findViewById<Chip>(i)
+
+            if (chip != null) {
+                Toast.makeText(context,"Range Harga : ${chip.text}",Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
+    @SuppressLint("NewApi")
+    private fun generateChip(text: String): Chip {
+        val chip = Chip(activity)
+        chip.id = View.generateViewId()
+
+        chipCategory.add(chip.id)
+
+        val chipDrawable =
+            ChipDrawable.createFromAttributes(activity, null, 0, R.style.customChips)
+        chip.setChipDrawable(chipDrawable)
+        chip.setTextAppearanceResource(R.style.customChips)
+        chip.chipStrokeWidth =1f
+        chip.chipStrokeColor = ColorStateList.valueOf(resources.getColor(R.color.colorPrimaryGray))
+
+        chip.isClickable = true
+        chip.isCheckable = true
+        chip.text = text
+        return chip
     }
 
     private fun showSelectedVacation(data: Dummy) {

@@ -2,6 +2,7 @@ package com.aldi.kebandung.destination
 
 
 import android.annotation.SuppressLint
+import android.content.res.ColorStateList
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -17,11 +18,15 @@ import com.aldi.kebandung.adapter.DummyAdapter
 import com.aldi.kebandung.data.dummyData
 import com.aldi.kebandung.menu.DestinationFragmentDirections
 import com.aldi.kebandung.model.Dummy
+import com.google.android.material.chip.Chip
+import com.google.android.material.chip.ChipDrawable
 import kotlinx.android.synthetic.main.fragment_vacation.*
 import kotlinx.android.synthetic.main.item_dummy.*
 
 
 class VacationFragment : Fragment() {
+
+    private lateinit var chipCategory: ArrayList<Int>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,6 +39,7 @@ class VacationFragment : Fragment() {
     @SuppressLint("WrongConstant")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
          vacationRecyclerView.apply {
         layoutManager = LinearLayoutManager(activity, LinearLayout.VERTICAL, false)
         adapter = DummyAdapter(dummyData.dummyData)
@@ -41,8 +47,60 @@ class VacationFragment : Fragment() {
             override fun onItemClicked(data: Dummy) {
                 showSelectedVacation(data)
             }
-        })
+            })
+          }
+        chipCategory = ArrayList()
+        val vacationCategory = arrayOf(
+            "Taman",
+            "Pantai",
+            "Gunung",
+            "Bukit",
+            "Hutan",
+            "Air Terjun",
+            "Kebung Binatang",
+            "Pantai",
+            "Museum",
+            "Makam",
+            "Situs Sejarah"
+        )
+
+        vacationCategory.forEach { categoryName ->
+            val chip = generateChip(categoryName)
+
+            vacationCategoryChip.addView(chip)
+        }
+
+        vacationCategoryChip.check(chipCategory[0])
+
+        vacationCategoryChip.isSingleSelection = true
+
+        vacationCategoryChip.setOnCheckedChangeListener { chipGroup, i ->
+            val chip = chipGroup.findViewById<Chip>(i)
+
+            if (chip != null) {
+                Toast.makeText(context,"Kategori Wisata : ${chip.text}",Toast.LENGTH_SHORT).show()
+            }
+        }
     }
+
+    @SuppressLint("NewApi")
+    private fun generateChip(text: String): Chip {
+        val chip = Chip(activity)
+        chip.id = View.generateViewId()
+
+        chipCategory.add(chip.id)
+
+        val chipDrawable =
+            ChipDrawable.createFromAttributes(activity, null, 0, R.style.customChips)
+        chip.setChipDrawable(chipDrawable)
+        chip.setTextAppearanceResource(R.style.customChips)
+        chip.chipStrokeWidth =1f
+        chip.chipStrokeColor = ColorStateList.valueOf(resources.getColor(R.color.colorPrimaryGray))
+
+        chip.isClickable = true
+        chip.isCheckable = true
+        chip.text = text
+        return chip
     }
 
     private fun showSelectedVacation(data: Dummy) {
