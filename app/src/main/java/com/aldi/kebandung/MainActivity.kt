@@ -2,8 +2,10 @@ package com.aldi.kebandung
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import android.view.View
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.NavController
@@ -25,6 +27,7 @@ class MainActivity : AppCompatActivity(),ChangeToolbarTitle {
     private lateinit var host: NavHostFragment
     private lateinit var mainToolbar: Toolbar
     private lateinit var mainToolbarTitle: TextView
+    private var doubleBackToExitPressedOnce = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -67,6 +70,14 @@ class MainActivity : AppCompatActivity(),ChangeToolbarTitle {
 
     override fun onBackPressed() {
         findNavController(R.id.primary_navigation_fragment).navigateUp(appBarConfiguration)
+        if (doubleBackToExitPressedOnce) {
+            finish()
+        }
+
+        this.doubleBackToExitPressedOnce = true
+
+
+        Handler().postDelayed(Runnable { doubleBackToExitPressedOnce = false }, 2000)
     }
 
 
