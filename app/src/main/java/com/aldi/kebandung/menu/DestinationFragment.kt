@@ -2,10 +2,8 @@ package com.aldi.kebandung.menu
 
 
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 
 import com.aldi.kebandung.R
 import com.aldi.kebandung.adapter.DestinationPagerAdapter
@@ -27,10 +25,15 @@ class DestinationFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         (activity as ChangeToolbarTitle).showToolbar(true)
         (activity as ChangeToolbarTitle).updateTitle("Destinasi")
-
+        setHasOptionsMenu(true)
         val pagerAdapter = DestinationPagerAdapter(childFragmentManager)
         destinationViewPager.adapter = pagerAdapter
         destinationTabLayout.setupWithViewPager(destinationViewPager)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater!!.inflate(R.menu.options_menu, menu)
+        super.onCreateOptionsMenu(menu, inflater)
     }
 
 }

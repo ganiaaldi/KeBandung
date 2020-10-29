@@ -15,6 +15,7 @@ import com.aldi.kebandung.R
 import com.aldi.kebandung.adapter.CommentAdapter
 import com.aldi.kebandung.data.commentData
 import com.aldi.kebandung.model.Comment
+import com.aldi.kebandung.view.ChangeToolbarTitle
 import kotlinx.android.synthetic.main.fragment_detail.*
 
 class DetailFragment : Fragment() {
@@ -39,6 +40,7 @@ class DetailFragment : Fragment() {
     @SuppressLint("WrongConstant")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        (activity as ChangeToolbarTitle).showToolbar(false)
         setupBackButton()
         namaDestinasi= DetailFragmentArgs.fromBundle(arguments!!).nameDestination!!
         alamatDestinasi = DetailFragmentArgs.fromBundle(arguments!!).alamatDestination!!
