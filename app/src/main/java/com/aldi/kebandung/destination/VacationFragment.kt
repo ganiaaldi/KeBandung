@@ -21,7 +21,7 @@ import com.aldi.kebandung.model.Dummy
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipDrawable
 import kotlinx.android.synthetic.main.fragment_vacation.*
-import kotlinx.android.synthetic.main.item_dummy.*
+import kotlinx.android.synthetic.main.item_content.*
 
 
 class VacationFragment : Fragment() {

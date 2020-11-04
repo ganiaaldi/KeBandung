@@ -64,7 +64,7 @@
              android:layout_width="match_parent"
              android:layout_height="wrap_content"
              android:orientation="horizontal"
-             tools:listitem="@layout/item_dummy"/>
+             tools:listitem="@layout/item_content"/>
 
      <androidx.appcompat.widget.AppCompatTextView
              android:layout_width="wrap_content"
