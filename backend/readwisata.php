@@ -22,7 +22,7 @@ if ($res != false) {
             'jam_buka' => $row['jam_buka'],
             'jam_tutup' => $row['jam_tutup'],
             'harga' => $row['harga'],
-            'gambar_wisata' => base64_encode($row['gambar_wisata'])
+            'gambar_wisata' => $row['gambar_wisata']
         )
     );
 }

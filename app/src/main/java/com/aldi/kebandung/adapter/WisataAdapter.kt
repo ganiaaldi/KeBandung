@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.aldi.kebandung.Endpoint
 import com.aldi.kebandung.R
 import com.aldi.kebandung.model.Wisata
 import com.bumptech.glide.Glide
@@ -39,8 +40,9 @@ class WisataAdapter(val listVacation: ArrayList<Wisata>) : RecyclerView.Adapter<
 
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
         val wisata = listVacation[position]
+        val url = Endpoint.GAMBAR+wisata.gambarWisata
         Glide.with(holder.itemView.context)
-            .load(wisata.gambarWisata)
+            .load(url)
             .apply(RequestOptions())
             .into(holder.imgWisata)
         holder.nameWisata.text = wisata.namaWisata

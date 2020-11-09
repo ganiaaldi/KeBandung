@@ -36,6 +36,6 @@
         <argument android:name="jamTutupDestination" app:argType="string" app:nullable="true"
                   android:defaultValue="0"/>
         <argument android:name="hargaDestination" app:argType="integer" android:defaultValue="0"/>
-        <argument android:name="gambarDestination" app:argType="integer"/>
+        <argument android:name="gambarDestination" app:argType="string" app:nullable="true"/>
     </fragment>
 </navigation>

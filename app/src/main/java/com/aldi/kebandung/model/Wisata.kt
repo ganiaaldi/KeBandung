@@ -11,5 +11,5 @@ data class Wisata(
     var jamBuka: String = "",
     var jamTutup: String = "",
     var harga: Int = 0,
-    var gambarWisata: Int = 0
+    var gambarWisata: String = ""
     )

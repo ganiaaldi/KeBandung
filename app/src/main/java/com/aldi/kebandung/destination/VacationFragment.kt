@@ -103,7 +103,7 @@ class VacationFragment : Fragment() {
         vacationRecyclerView.setHasFixedSize(true)
         vacationRecyclerView.layoutManager = LinearLayoutManager(context)
         AndroidNetworking.get(Endpoint.READWISATA)
-            .setPriority(Priority.MEDIUM)
+            .setPriority(Priority.HIGH)
             .build()
             .getAsJSONObject(object : JSONObjectRequestListener {
 
@@ -128,8 +128,8 @@ class VacationFragment : Fragment() {
                             jsonObject.getString("nama_kategori_wisata"),
                             jsonObject.getString("jam_buka"),
                             jsonObject.getString("jam_tutup"),
-                            jsonObject.getInt("harga")
-                           // jsonObject.getInt("gambar_wisata")
+                            jsonObject.getInt("harga"),
+                            jsonObject.getString("gambar_wisata")
                         ))
 
                         if(jsonArray?.length() - 1 == i){
