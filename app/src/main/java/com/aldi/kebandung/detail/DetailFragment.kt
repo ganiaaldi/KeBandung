@@ -21,11 +21,13 @@ import kotlinx.android.synthetic.main.fragment_detail.*
 class DetailFragment : Fragment() {
 
     lateinit var namaDestinasi : String
-    lateinit var kecamatanDestinasi : String
     lateinit var jamDestinasi : String
     lateinit var alamatDestinasi : String
     lateinit var alamatLengkapDestinasi : String
     lateinit var detailDestinasi : String
+    lateinit var kategoriDestinasi : String
+    lateinit var jamBukaDestinasi : String
+    lateinit var jamTutupDestinasi : String
     var photoDestinasi : Int = 0
     var hargaDestinasi : Int = 0
 
@@ -43,12 +45,14 @@ class DetailFragment : Fragment() {
         (activity as ChangeToolbarTitle).showToolbar(false)
         setupBackButton()
         namaDestinasi= DetailFragmentArgs.fromBundle(arguments!!).nameDestination!!
-        alamatDestinasi = DetailFragmentArgs.fromBundle(arguments!!).alamatDestination!!
-        alamatLengkapDestinasi = DetailFragmentArgs.fromBundle(arguments!!).alamatLengkapDestination!!
+        alamatDestinasi = DetailFragmentArgs.fromBundle(arguments!!).daerahDestination!!
+        alamatLengkapDestinasi = DetailFragmentArgs.fromBundle(arguments!!).alamatDestination!!
        // kecamatanDestinasi = DetailFragmentArgs.fromBundle(arguments!!).kecamatanDestination!!
         detailDestinasi  = DetailFragmentArgs.fromBundle(arguments!!).detailDestination!!
-        jamDestinasi = DetailFragmentArgs.fromBundle(arguments!!).jamDestination!!
-        photoDestinasi = DetailFragmentArgs.fromBundle(arguments!!).photoDestination!!
+        kategoriDestinasi = DetailFragmentArgs.fromBundle(arguments!!).kategoriDestination!!
+        jamBukaDestinasi  = DetailFragmentArgs.fromBundle(arguments!!).jamBukaDestination!!
+        jamTutupDestinasi = DetailFragmentArgs.fromBundle(arguments!!).jamTutupDestination!!
+       // photoDestinasi = DetailFragmentArgs.fromBundle(arguments!!).gambarDestination!!
         hargaDestinasi = DetailFragmentArgs.fromBundle(arguments!!).hargaDestination!!
 
         detail_destinasi.setImageResource(photoDestinasi)
@@ -56,7 +60,7 @@ class DetailFragment : Fragment() {
         tvLokasi.text = alamatDestinasi
         tvLokasiDetail.text = alamatLengkapDestinasi
         tv_item_description.text = detailDestinasi
-        tvJamm.text = jamDestinasi
+        tvJamm.text = jamBukaDestinasi
         tvHarga.text = hargaDestinasi.toString()
 
         rvComment.apply{

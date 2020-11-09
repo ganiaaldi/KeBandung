@@ -22,18 +22,20 @@
     <fragment android:id="@+id/detailFragment" android:name="com.aldi.kebandung.detail.DetailFragment"
               android:label="fragment_detail" tools:layout="@layout/fragment_detail">
         <argument android:name="nameDestination" app:argType="string" app:nullable="true"
-                  android:defaultValue="Destinasi"/>
-        <argument android:name="kecamatanDestination" app:argType="string" app:nullable="true"
-                  android:defaultValue="Bandung"/>
+                  android:defaultValue="0"/>
+        <argument android:name="daerahDestination" app:argType="string" app:nullable="true"
+                  android:defaultValue="0"/>
         <argument android:name="alamatDestination" app:argType="string" app:nullable="true"
-                  android:defaultValue="Bandung"/>
+                  android:defaultValue="0"/>
         <argument android:name="detailDestination" app:argType="string" app:nullable="true"
-                  android:defaultValue="Tempat ini berada di kota Bandung."/>
-        <argument android:name="alamatLengkapDestination" app:argType="string" app:nullable="true"
-                  android:defaultValue="Bandung"/>
-        <argument android:name="jamDestination" app:argType="string" app:nullable="true"
-                  android:defaultValue="08.00 - 16.00 WIB"/>
-        <argument android:name="photoDestination" app:argType="integer" android:defaultValue="0"/>
+                  android:defaultValue="0"/>
+        <argument android:name="kategoriDestination" app:argType="string" app:nullable="true"
+                  android:defaultValue="0"/>
+        <argument android:name="jamBukaDestination" app:argType="string" app:nullable="true"
+                  android:defaultValue="0"/>
+        <argument android:name="jamTutupDestination" app:argType="string" app:nullable="true"
+                  android:defaultValue="0"/>
         <argument android:name="hargaDestination" app:argType="integer" android:defaultValue="0"/>
+        <argument android:name="gambarDestination" app:argType="integer"/>
     </fragment>
 </navigation>

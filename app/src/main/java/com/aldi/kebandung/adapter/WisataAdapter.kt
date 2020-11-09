@@ -38,13 +38,13 @@ class WisataAdapter(val listVacation: ArrayList<Wisata>) : RecyclerView.Adapter<
     }
 
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
-        val rekomendasi = listVacation[position]
+        val wisata = listVacation[position]
         Glide.with(holder.itemView.context)
-            .load(rekomendasi.gambarWisata)
+            .load(wisata.gambarWisata)
             .apply(RequestOptions())
             .into(holder.imgWisata)
-        holder.nameWisata.text = rekomendasi.namaWisata
-        holder.locateWisata.text = rekomendasi.namaDaerah
+        holder.nameWisata.text = wisata.namaWisata
+        holder.locateWisata.text = wisata.namaDaerah
         holder.itemView.setOnClickListener {
             onItemClickCallback.onItemClicked(listVacation[holder.adapterPosition])
         }

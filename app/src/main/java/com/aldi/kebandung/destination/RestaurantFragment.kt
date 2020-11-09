@@ -100,11 +100,12 @@ class RestaurantFragment : Fragment() {
         chip.text = text
         return chip
     }
+
     private fun showSelectedVacation(data: Dummy) {
         Toast.makeText(context, " "+data.nameVacation,Toast.LENGTH_SHORT).show()
-        val args = DestinationFragmentDirections.actionDestinationFragmentToDetailFragment(data.nameVacation,data.kecamatanVacation
-            , data.alamatVacation, data.detailVacation, data.alamatLengkap, data.jamVacation, data.photoVacation, data.harga)
-        findNavController().navigate(args)
+   //     val args = DestinationFragmentDirections.actionDestinationFragmentToDetailFragment(data.nameVacation,data.kecamatanVacation
+     //       , data.alamatVacation, data.detailVacation, data.alamatLengkap, data.jamVacation, data.photoVacation, data.harga)
+   //     findNavController().navigate(args)
     }
 
 }

@@ -1,7 +1,10 @@
 <?php
 require_once('connection.php');
 
-$query = "SELECT * FROM wisata";
+$query = "SELECT * FROM wisata JOIN daerah
+ ON wisata.no_daerah=daerah.no_daerah
+ JOIN kategori_wisata
+ ON wisata.no_kategori_wisata=kategori_wisata.no_kategori_wisata";
 $res = mysqli_query($CON, $query);
 
 $result = array();
@@ -11,11 +14,11 @@ if ($res != false) {
     array_push($result, array(
             'no_wisata' => $row['no_wisata'],
             'nama_wisata' => $row['nama_wisata'],
-            'no_daerah' => $row['no_daerah'],
+            'nama_daerah' => $row['nama_daerah'],
             'alamat_lengkap' => $row['alamat_lengkap'],
             'detail_wisata' => $row['detail_wisata'],
             'no_daerah' => $row['no_daerah'],
-            'no_kategori_wisata' => $row['no_kategori_wisata'],
+            'nama_kategori_wisata' => $row['nama_kategori_wisata'],
             'jam_buka' => $row['jam_buka'],
             'jam_tutup' => $row['jam_tutup'],
             'harga' => $row['harga'],
