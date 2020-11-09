@@ -2,8 +2,10 @@ package com.aldi.kebandung.destination
 
 
 import android.annotation.SuppressLint
+import android.app.ProgressDialog
 import android.content.res.ColorStateList
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -12,15 +14,23 @@ import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.aldi.kebandung.Endpoint
 
 import com.aldi.kebandung.R
 import com.aldi.kebandung.adapter.DummyAdapter
+import com.aldi.kebandung.adapter.RestaurantAdapter
 import com.aldi.kebandung.data.dummyData
 import com.aldi.kebandung.menu.DestinationFragmentDirections
 import com.aldi.kebandung.model.Dummy
+import com.aldi.kebandung.model.Restaurant
+import com.androidnetworking.AndroidNetworking
+import com.androidnetworking.common.Priority
+import com.androidnetworking.error.ANError
+import com.androidnetworking.interfaces.JSONObjectRequestListener
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipDrawable
 import kotlinx.android.synthetic.main.fragment_restaurant.*
+import org.json.JSONObject
 
 
 class RestaurantFragment : Fragment() {
@@ -38,15 +48,15 @@ class RestaurantFragment : Fragment() {
     @SuppressLint("WrongConstant")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        restaurantRecyclerView.apply{
-            layoutManager = LinearLayoutManager(activity, LinearLayout.VERTICAL, false)
-            adapter = DummyAdapter(dummyData.dummyDataRestaurant)
-            (adapter as DummyAdapter).setOnItemClickCallback(object : DummyAdapter.OnItemClickCallback {
-                override fun onItemClicked(data: Dummy) {
-                    showSelectedVacation(data)
-                }
-            })
-        }
+       // restaurantRecyclerView.apply{
+    //        layoutManager = LinearLayoutManager(activity, LinearLayout.VERTICAL, false)
+     //       adapter = DummyAdapter(dummyData.dummyDataRestaurant)
+    //        (adapter as DummyAdapter).setOnItemClickCallback(object : DummyAdapter.OnItemClickCallback {
+    //            override fun onItemClicked(data: Dummy) {
+    //                showSelectedVacation(data)
+    //            }
+   //         })
+    //    }
         chipCategory = ArrayList()
         val restaurantCategory = arrayOf(
             "Keluarga",
@@ -101,8 +111,78 @@ class RestaurantFragment : Fragment() {
         return chip
     }
 
-    private fun showSelectedVacation(data: Dummy) {
-        Toast.makeText(context, " "+data.nameVacation,Toast.LENGTH_SHORT).show()
+    override fun onResume() {
+        super.onResume()
+        fan()
+    }
+
+    fun fan(){
+        val loading = ProgressDialog(context)
+        loading.setMessage("Memuat data...")
+        loading.show()
+        var listRestaurant = ArrayList<Restaurant>()
+        restaurantRecyclerView.setHasFixedSize(true)
+        restaurantRecyclerView.layoutManager = LinearLayoutManager(context)
+        AndroidNetworking.get(Endpoint.READRESTAURANT)
+            .setPriority(Priority.HIGH)
+            .build()
+            .getAsJSONObject(object : JSONObjectRequestListener {
+
+                override fun onResponse(response: JSONObject?) {
+                    listRestaurant.clear()
+
+                    val jsonArray = response?.optJSONArray("result")
+
+                    if(jsonArray?.length() == 0){
+                        loading.dismiss()
+                        Toast.makeText(context,"Data Restaurant Kosong",Toast.LENGTH_SHORT).show()
+                    }
+
+                    for(i in 0 until jsonArray?.length()!!){
+
+                        val jsonObject = jsonArray?.optJSONObject(i)
+                        listRestaurant.add(Restaurant(
+                            jsonObject.getString("nama_restaurant"),
+                            jsonObject.getString("nama_daerah"),
+                            jsonObject.getString("alamat_lengkap"),
+                            jsonObject.getString("detail_restaurant"),
+                            jsonObject.getString("nama_kategori_kuliner"),
+                            jsonObject.getString("jam_buka"),
+                            jsonObject.getString("jam_tutup"),
+                            jsonObject.getString("gambar_restaurant")
+                        ))
+
+                        if(jsonArray?.length() - 1 == i){
+
+                            loading.dismiss()
+                            val adapter = RestaurantAdapter(listRestaurant)
+                            adapter.notifyDataSetChanged()
+
+                            restaurantRecyclerView.adapter = adapter
+                            adapter.setOnItemClickCallback(object : RestaurantAdapter.OnItemClickCallback {
+                                override fun onItemClicked(data: Restaurant) {
+                                    showSelectedVacation(data)
+                                }
+                            })
+
+                        }
+
+                    }
+
+                }
+
+                override fun onError(anError: ANError?) {
+                    loading.dismiss()
+                    Log.d("ONERROR",anError?.errorDetail?.toString())
+                    Toast.makeText(context,"Connection Failure",Toast.LENGTH_SHORT).show()
+                }
+
+            })
+    }
+
+
+    private fun showSelectedVacation(data: Restaurant) {
+    //    Toast.makeText(context, " "+data.nameVacation,Toast.LENGTH_SHORT).show()
    //     val args = DestinationFragmentDirections.actionDestinationFragmentToDetailFragment(data.nameVacation,data.kecamatanVacation
      //       , data.alamatVacation, data.detailVacation, data.alamatLengkap, data.jamVacation, data.photoVacation, data.harga)
    //     findNavController().navigate(args)

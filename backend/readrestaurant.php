@@ -1,7 +1,10 @@
 <?php
 require_once('connection.php');
 
-$query = "SELECT * FROM restaurant";
+$query = "SELECT * FROM restaurant JOIN daerah
+ON restaurant.no_daerah=daerah.no_daerah
+JOIN kategori_kuliner
+ON restaurant.no_kategori_kuliner=kategori_kuliner.no_kategori_kuliner";
 $res = mysqli_query($CON, $query);
 
 $result = array();
@@ -11,13 +14,13 @@ if ($res != false) {
     array_push($result, array(
             'no_restaurant' => $row['no_restaurant'],
             'nama_restaurant' => $row['nama_restaurant'],
-            'no_daerah' => $row['no_daerah'],
+            'nama_daerah' => $row['nama_daerah'],
             'alamat_lengkap' => $row['alamat_lengkap'],
             'detail_restaurant' => $row['detail_restaurant'],
-            'no_kategori_kuliner' => $row['no_kategori_kuliner'],
+            'nama_kategori_kuliner' => $row['nama_kategori_kuliner'],
             'jam_buka' => $row['jam_buka'],
             'jam_tutup' => $row['jam_tutup'],
-            'gambar_restaurant' => base64_encode($row['gambar_restaurant'])
+            'gambar_restaurant' => $row['gambar_restaurant']
         )
     );
 }

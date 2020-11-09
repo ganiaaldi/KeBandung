@@ -8,5 +8,6 @@ class Endpoint {
         val READWISATA = SERVER+"readwisata.php"
         val GAMBAR = SERVER+"/images/"
         val READHOTEL = SERVER+"readhotel.php"
+        val READRESTAURANT = SERVER+"readrestaurant.php"
     }
 }
