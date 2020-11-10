@@ -10,12 +10,15 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.aldi.kebandung.Endpoint
 
 import com.aldi.kebandung.R
 import com.aldi.kebandung.adapter.CommentAdapter
 import com.aldi.kebandung.data.commentData
 import com.aldi.kebandung.model.Comment
 import com.aldi.kebandung.view.ChangeToolbarTitle
+import com.bumptech.glide.Glide
+import com.fasterxml.jackson.databind.util.ClassUtil.getPackageName
 import kotlinx.android.synthetic.main.fragment_detail.*
 
 class DetailFragment : Fragment() {
@@ -28,7 +31,7 @@ class DetailFragment : Fragment() {
     lateinit var kategoriDestinasi : String
     lateinit var jamBukaDestinasi : String
     lateinit var jamTutupDestinasi : String
-    var photoDestinasi : Int = 0
+    lateinit var photoDestinasi : String
     var hargaDestinasi : Int = 0
 
     override fun onCreateView(
@@ -52,10 +55,14 @@ class DetailFragment : Fragment() {
         kategoriDestinasi = DetailFragmentArgs.fromBundle(arguments!!).kategoriDestination!!
         jamBukaDestinasi  = DetailFragmentArgs.fromBundle(arguments!!).jamBukaDestination!!
         jamTutupDestinasi = DetailFragmentArgs.fromBundle(arguments!!).jamTutupDestination!!
-       // photoDestinasi = DetailFragmentArgs.fromBundle(arguments!!).gambarDestination!!
+        photoDestinasi = DetailFragmentArgs.fromBundle(arguments!!).gambarDestination!!
         hargaDestinasi = DetailFragmentArgs.fromBundle(arguments!!).hargaDestination!!
 
-        detail_destinasi.setImageResource(photoDestinasi)
+        //detail_destinasi.setImageResource(photoDestinasi)
+        var url = Endpoint.GAMBAR+photoDestinasi
+        Glide.with(view.context)
+            .load(url)
+            .into(detail_destinasi)
         tvNamaDestinasi.text = namaDestinasi
         tvLokasi.text = alamatDestinasi
         tvLokasiDetail.text = alamatLengkapDestinasi
