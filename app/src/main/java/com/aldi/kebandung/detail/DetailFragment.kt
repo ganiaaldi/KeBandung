@@ -6,6 +6,7 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.widget.LinearLayout
@@ -43,6 +44,14 @@ class DetailFragment : Fragment() {
     var jumlahKamarHotel : Int = 0
     lateinit var fasilitasHotel : String
     lateinit var gambarHotel : String
+    lateinit var namaRestaurant : String
+    lateinit var daerahRestaurant : String
+    lateinit var alamatRestaurant : String
+    lateinit var detailRestaurant : String
+    lateinit var kategoriRestaurant : String
+    lateinit var jamBukaRestaurant : String
+    lateinit var jamTutupRestaurant : String
+    lateinit var gambarRestaurant : String
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -59,6 +68,7 @@ class DetailFragment : Fragment() {
         setupBackButton()
         vacationArgs()
         hotelArgs()
+        restaurantArgs()
         //detail_destinasi.setImageResource(photoDestinasi)
         if(namaDestinasi != "0") {
             var url = Endpoint.GAMBAR + photoDestinasi
@@ -84,11 +94,25 @@ class DetailFragment : Fragment() {
             tv_item_description.text = detailHotel
             tvJam.text = "Jumlah Kamar : "
             tvJamm.text = jumlahKamarHotel.toString()
+            tvTiket.text= "Harga Sewa : "
             tvHarga.text = "$hargaHotel/hari"
             tvFasilitas.visibility = VISIBLE
             tv_item_fasilitas.visibility = VISIBLE
             tv_item_fasilitas.text = fasilitasHotel
+        }
 
+        if(namaRestaurant != "0") {
+            var url = Endpoint.GAMBAR + gambarRestaurant
+            Glide.with(view.context)
+                .load(url)
+                .into(detail_destinasi)
+            tvNamaDestinasi.text = namaRestaurant
+            tvLokasi.text = daerahRestaurant
+            tvLokasiDetail.text = alamatRestaurant
+            tv_item_description.text = detailRestaurant
+            tvJamm.text = (jamBukaRestaurant + "-" + jamTutupRestaurant)
+            tvTiket.visibility = GONE
+            tvHarga.visibility = GONE
         }
 
         rvComment.apply{
@@ -132,5 +156,16 @@ class DetailFragment : Fragment() {
         jumlahKamarHotel = DetailFragmentArgs.fromBundle(arguments!!).jumlahKamarHotel!!
         fasilitasHotel = DetailFragmentArgs.fromBundle(arguments!!).fasilitasHotel!!
         gambarHotel = DetailFragmentArgs.fromBundle(arguments!!).gambarHotel!!
+    }
+
+    fun restaurantArgs(){
+        namaRestaurant = DetailFragmentArgs.fromBundle(arguments!!).nameRestaurant!!
+        daerahRestaurant = DetailFragmentArgs.fromBundle(arguments!!).daerahRestaurant!!
+        alamatRestaurant = DetailFragmentArgs.fromBundle(arguments!!).alamatRestaurant!!
+        detailRestaurant = DetailFragmentArgs.fromBundle(arguments!!).detailRestaurant!!
+        kategoriRestaurant = DetailFragmentArgs.fromBundle(arguments!!).kategoriRestaurant!!
+        jamBukaRestaurant = DetailFragmentArgs.fromBundle(arguments!!).jamBukaRestaurant!!
+        jamTutupRestaurant = DetailFragmentArgs.fromBundle(arguments!!).jamTutupRestaurant!!
+        gambarRestaurant = DetailFragmentArgs.fromBundle(arguments!!).gambarRestaurant!!
     }
 }

@@ -46,5 +46,13 @@
         <argument android:name="jumlahKamarHotel" app:argType="integer" android:defaultValue="0"/>
         <argument android:name="fasilitasHotel" app:argType="string" app:nullable="true" android:defaultValue="0"/>
         <argument android:name="gambarHotel" app:argType="string" app:nullable="true" android:defaultValue="0"/>
+        <argument android:name="nameRestaurant" app:argType="string" app:nullable="true" android:defaultValue="0"/>
+        <argument android:name="daerahRestaurant" app:argType="string" app:nullable="true" android:defaultValue="0"/>
+        <argument android:name="alamatRestaurant" app:argType="string" app:nullable="true" android:defaultValue="0"/>
+        <argument android:name="detailRestaurant" app:argType="string" app:nullable="true" android:defaultValue="0"/>
+        <argument android:name="kategoriRestaurant" app:argType="string" app:nullable="true" android:defaultValue="0"/>
+        <argument android:name="jamBukaRestaurant" app:argType="string" app:nullable="true" android:defaultValue="0"/>
+        <argument android:name="jamTutupRestaurant" app:argType="string" app:nullable="true" android:defaultValue="0"/>
+        <argument android:name="gambarRestaurant" app:argType="string" app:nullable="true" android:defaultValue="0"/>
     </fragment>
 </navigation>
