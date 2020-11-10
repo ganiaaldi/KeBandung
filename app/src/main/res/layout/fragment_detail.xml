@@ -99,7 +99,7 @@
                 android:id="@+id/tvJam"
                 android:layout_below="@id/layoutDetail"
                 android:layout_marginTop="@dimen/_5sdp"
-                android:text="Jam Buka : "
+                android:text="Jam Operasional : "
                 style="@style/DarkRegTextSmall"
         />
 
@@ -158,8 +158,32 @@
         <androidx.appcompat.widget.AppCompatTextView
                 android:layout_height="match_parent"
                 android:layout_width="match_parent"
-                android:id="@+id/tvKomentar"
+                android:id="@+id/tvFasilitas"
                 android:layout_below="@id/tv_item_description"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:text="Fasilitas"
+                style="@style/DarkRegText"
+                android:visibility="gone"
+        />
+
+        <androidx.appcompat.widget.AppCompatTextView
+                android:layout_below="@id/tvFasilitas"
+                android:id="@+id/tv_item_fasilitas"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/_2sdp"
+                android:layout_marginBottom="@dimen/_12sdp"
+                android:lineSpacingMultiplier="1"
+                android:gravity="fill_horizontal"
+                android:justificationMode="inter_word"
+                tools:targetApi="o"
+                android:visibility="gone"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:id="@+id/tvKomentar"
+                android:layout_below="@id/tv_item_fasilitas"
                 android:layout_marginTop="@dimen/_15sdp"
                 android:text="Komentar"
                 style="@style/DarkRegText"

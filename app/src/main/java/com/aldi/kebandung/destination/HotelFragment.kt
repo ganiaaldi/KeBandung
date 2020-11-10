@@ -176,10 +176,12 @@ class HotelFragment : Fragment() {
     }
 
     private fun showSelectedVacation(data: Hotel) {
-     //   Toast.makeText(context, " "+data.nameVacation,Toast.LENGTH_SHORT).show()
-   //     val args = DestinationFragmentDirections.actionDestinationFragmentToDetailFragment(data.nameVacation,data.kecamatanVacation
-    //        , data.alamatVacation, data.detailVacation, data.alamatLengkap, data.jamVacation, data.photoVacation, data.harga)
-    //    findNavController().navigate(args)
+      Toast.makeText(context, " "+data.namaHotel,Toast.LENGTH_SHORT).show()
+       val args = DestinationFragmentDirections.actionDestinationFragmentToDetailFragment(nameHotel = data.namaHotel,
+           daerahHotel = data.namaDaerah, alamatHotel = data.alamatLengkap, detailHotel = data.detailHotel,
+           hargaHotel = data.harga, rangeHotel = data.rangeHarga, jumlahKamarHotel = data.jumlahKamar,
+           fasilitasHotel = data.fasilitas, gambarHotel = data.gambarHotel)
+        findNavController().navigate(args)
     }
 
 }

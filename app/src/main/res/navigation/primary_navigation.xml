@@ -15,7 +15,7 @@
     </fragment>
     <fragment android:id="@+id/destinationFragment" android:name="com.aldi.kebandung.menu.DestinationFragment"
               android:label="fragment_destination" tools:layout="@layout/fragment_destination">
-        <action android:id="@+id/action_destinationFragment_to_detailFragment" app:destination="@id/detailFragment"/>
+        <action android:id="@+id/action_destinationFragment_to_detailFragment" app:destination="@+id/detailFragment"/>
     </fragment>
     <fragment android:id="@+id/loginFragment2" android:name="com.aldi.kebandung.auth.LoginFragment"
               android:label="fragment_login" tools:layout="@layout/fragment_login"/>
@@ -37,5 +37,14 @@
                   android:defaultValue="0"/>
         <argument android:name="hargaDestination" app:argType="integer" android:defaultValue="0"/>
         <argument android:name="gambarDestination" app:argType="string" app:nullable="true" android:defaultValue="0"/>
+        <argument android:name="nameHotel" app:argType="string" app:nullable="true" android:defaultValue="0"/>
+        <argument android:name="daerahHotel" app:argType="string" app:nullable="true" android:defaultValue="0"/>
+        <argument android:name="alamatHotel" app:argType="string" app:nullable="true" android:defaultValue="0"/>
+        <argument android:name="detailHotel" app:argType="string" app:nullable="true" android:defaultValue="0"/>
+        <argument android:name="hargaHotel" app:argType="integer" android:defaultValue="0"/>
+        <argument android:name="rangeHotel" app:argType="string" app:nullable="true" android:defaultValue="0"/>
+        <argument android:name="jumlahKamarHotel" app:argType="integer" android:defaultValue="0"/>
+        <argument android:name="fasilitasHotel" app:argType="string" app:nullable="true" android:defaultValue="0"/>
+        <argument android:name="gambarHotel" app:argType="string" app:nullable="true" android:defaultValue="0"/>
     </fragment>
 </navigation>
