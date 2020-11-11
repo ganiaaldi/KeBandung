@@ -5,6 +5,12 @@
              android:layout_height="match_parent"
              tools:context=".menu.AccountFragment">
 
+
+<RelativeLayout android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/notLogin"
+                android:visibility="gone">
+
     <androidx.appcompat.widget.AppCompatImageView
             android:layout_width="@dimen/_120sdp"
             android:layout_height="@dimen/_120sdp"
@@ -50,5 +56,101 @@
             android:layout_marginTop="@dimen/_15sdp"
             android:layout_centerHorizontal="true"
     />
+</RelativeLayout>
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/hasLogin"
+            android:layout_margin="@dimen/_5sdp">
 
+        <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imageViewProfileUsername"
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="@dimen/_100sdp"
+                android:src="@drawable/asephappy"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/_10sdp"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnLogout"
+                android:layout_margin="@dimen/_10sdp"
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="@dimen/_25sdp"
+                android:layout_toRightOf="@id/imageViewProfileUsername"
+                android:background="@drawable/btn_white"
+                style="@style/DarkMedTextSmall"
+                android:text="Keluar"
+                android:textAllCaps="false"
+                android:layout_marginTop="@dimen/_10sdp"
+        />
+
+        <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvProfileUsername"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_below="@+id/imageViewProfileUsername"
+                style="@style/DarkBoldTextSmall"
+                android:textAlignment="center"
+                android:text="Aldi"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvTempat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_below="@+id/tvProfileUsername"
+                style="@style/DarkMedTextSmall"
+                android:text="Tempat Destinasi"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvBelumTempat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvTempat"
+                style="@style/DarkRegTextSmall"
+                android:text="Belum menambah tempat destinasi"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvTambahTempat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvBelumTempat"
+                style="@style/DarkRegTextSmall"
+                android:textColor="@color/design_default_color_primary_dark"
+                android:text="Tambah tempat destinasi"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvHistory"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_below="@+id/tvTambahTempat"
+                style="@style/DarkMedTextSmall"
+                android:text="Terakhir Dilihat"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/rvHistory"
+                android:layout_below="@id/tvHistory">
+        </androidx.recyclerview.widget.RecyclerView>
+
+        <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvKomentar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_below="@+id/rvHistory"
+                style="@style/DarkMedTextSmall"
+                android:text="Komentar"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/rvCommentUsername"
+                android:layout_below="@id/tvKomentar">
+        </androidx.recyclerview.widget.RecyclerView>
+
+    </RelativeLayout>
 </RelativeLayout>
