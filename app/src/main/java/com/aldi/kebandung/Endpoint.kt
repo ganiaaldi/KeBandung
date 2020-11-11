@@ -9,5 +9,6 @@ class Endpoint {
         val GAMBAR = SERVER+"/images/"
         val READHOTEL = SERVER+"readhotel.php"
         val READRESTAURANT = SERVER+"readrestaurant.php"
+        val REGISTER = SERVER+"createid.php"
     }
 }
