@@ -4,11 +4,10 @@ package com.aldi.kebandung.menu
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
-import androidx.viewpager.widget.ViewPager
 
 import com.aldi.kebandung.R
 import com.aldi.kebandung.adapter.DestinationPagerAdapter
-import com.aldi.kebandung.view.ChangeToolbarTitle
+import com.aldi.kebandung.etc.ChangeToolbarTitle
 import kotlinx.android.synthetic.main.fragment_destination.*
 
 

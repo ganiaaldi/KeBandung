@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.aldi.kebandung.Endpoint
+import com.aldi.kebandung.etc.Endpoint
 import com.aldi.kebandung.R
 import com.aldi.kebandung.model.Restaurant
 import com.bumptech.glide.Glide

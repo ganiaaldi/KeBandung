@@ -1,4 +1,4 @@
-package com.aldi.kebandung.view
+package com.aldi.kebandung.etc
 
 import android.view.View
 

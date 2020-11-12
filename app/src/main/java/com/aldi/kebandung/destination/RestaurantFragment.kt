@@ -10,18 +10,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.aldi.kebandung.Endpoint
+import com.aldi.kebandung.etc.Endpoint
 
 import com.aldi.kebandung.R
-import com.aldi.kebandung.adapter.DummyAdapter
 import com.aldi.kebandung.adapter.RestaurantAdapter
-import com.aldi.kebandung.data.dummyData
 import com.aldi.kebandung.menu.DestinationFragmentDirections
-import com.aldi.kebandung.model.Dummy
 import com.aldi.kebandung.model.Restaurant
 import com.androidnetworking.AndroidNetworking
 import com.androidnetworking.common.Priority

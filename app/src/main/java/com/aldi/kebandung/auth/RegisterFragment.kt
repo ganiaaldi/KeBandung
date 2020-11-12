@@ -1,8 +1,6 @@
 package com.aldi.kebandung.auth
 
 import android.app.ProgressDialog
-import android.content.Context
-import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -11,7 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
-import com.aldi.kebandung.Endpoint
+import com.aldi.kebandung.etc.Endpoint
 
 import com.aldi.kebandung.R
 import com.androidnetworking.AndroidNetworking

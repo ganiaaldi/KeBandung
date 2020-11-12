@@ -16,9 +16,8 @@ import com.aldi.kebandung.adapter.BannerAdapter
 import com.aldi.kebandung.adapter.DummyAdapter
 import com.aldi.kebandung.data.dummyData
 import com.aldi.kebandung.model.Dummy
-import com.aldi.kebandung.view.ChangeToolbarTitle
+import com.aldi.kebandung.etc.ChangeToolbarTitle
 import kotlinx.android.synthetic.main.fragment_home.*
-import java.util.*
 
 class HomeFragment : Fragment() {
 

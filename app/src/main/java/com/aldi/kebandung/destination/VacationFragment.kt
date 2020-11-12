@@ -13,7 +13,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.aldi.kebandung.Endpoint
+import com.aldi.kebandung.etc.Endpoint
 
 import com.aldi.kebandung.R
 import com.aldi.kebandung.adapter.WisataAdapter

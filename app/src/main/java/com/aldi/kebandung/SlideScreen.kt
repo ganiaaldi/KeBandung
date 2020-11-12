@@ -21,23 +21,24 @@ import com.aldi.kebandung.R
 import kotlinx.android.synthetic.main.activity_slide_screen.*
 import android.app.PendingIntent.getActivity
 import com.aldi.kebandung.auth.AuthActivity
+import com.aldi.kebandung.etc.PrefManager
 
 
 class SlideScreen : AppCompatActivity() {
     private var myViewPagerAdapter: MyViewPagerAdapter? = null
     private var dotsLayout: LinearLayout? = null
     private var layouts: IntArray? = null
-    //private var prefManager: PrefManager = null
+    private lateinit var prefManager: PrefManager
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         // Checking for first time launch - before calling setContentView()
-        //  prefManager = PrefManager(this)
-        // if (!prefManager!!.isFirstTimeLaunch()) {
-        //      launchHomeScreen()
-        //      finish()
-        //  }
+          prefManager = PrefManager(this)
+         if (!prefManager!!.isFirstTimeLaunch()) {
+              launchAuthScreen()
+              finish()
+          }
         // Making notification bar transparent
         if (Build.VERSION.SDK_INT >= 21) {
             window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_STABLE or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
@@ -102,7 +103,7 @@ class SlideScreen : AppCompatActivity() {
     }
 
     private fun launchAuthScreen() {
-        //    prefManager!!.setLaunched(true) //if want launch slide just for one time, change to false
+        prefManager!!.setLaunched(false) //if want launch slide just for one time, change to false
         startActivity(Intent(this, AuthActivity::class.java))
     }
 

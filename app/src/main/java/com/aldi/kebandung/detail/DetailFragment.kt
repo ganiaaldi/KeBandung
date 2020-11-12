@@ -10,18 +10,16 @@ import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.widget.LinearLayout
-import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.aldi.kebandung.Endpoint
+import com.aldi.kebandung.etc.Endpoint
 
 import com.aldi.kebandung.R
 import com.aldi.kebandung.adapter.CommentAdapter
 import com.aldi.kebandung.data.commentData
 import com.aldi.kebandung.model.Comment
-import com.aldi.kebandung.view.ChangeToolbarTitle
+import com.aldi.kebandung.etc.ChangeToolbarTitle
 import com.bumptech.glide.Glide
-import com.fasterxml.jackson.databind.util.ClassUtil.getPackageName
 import kotlinx.android.synthetic.main.fragment_detail.*
 
 class DetailFragment : Fragment() {
