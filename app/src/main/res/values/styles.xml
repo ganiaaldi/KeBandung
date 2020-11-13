@@ -79,4 +79,10 @@
         <item name="android:textSize">@dimen/_10ssp</item>
         <item name="android:fontFamily">@font/poppinsmedium</item>
     </style>
+
+    <style name="SpinnerCustom" parent="Widget.AppCompat.Spinner.Underlined">
+        <item name="android:fontFamily">@font/poppinsregular</item>
+        <item name="android:textSize">@dimen/_15ssp</item>
+        <item name="android:textColor">@color/colorPrimaryDark</item>
+    </style>
 </resources>

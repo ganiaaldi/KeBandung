@@ -92,7 +92,7 @@
                 android:layout_below="@+id/imageViewProfileUsername"
                 style="@style/DarkBoldTextSmall"
                 android:textAlignment="center"
-                android:text="Aldi"/>
+                android:text="Guest"/>
 
         <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvTempat"

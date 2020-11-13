@@ -11,5 +11,6 @@ class Endpoint {
         val READRESTAURANT = SERVER +"readrestaurant.php"
         val REGISTER = SERVER +"createid.php"
         val READID = SERVER +"readid.php"
+        val READDAERAH = SERVER +"readdaerah.php"
     }
 }

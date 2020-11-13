@@ -28,11 +28,19 @@ class AccountFragment : Fragment() {
         (activity as ChangeToolbarTitle).showToolbar(true)
         (activity as ChangeToolbarTitle).updateTitle("Akun")
         buttonLogin()
+        createDestination()
     }
 
     fun buttonLogin(){
         btnLogin.setOnClickListener {
             findNavController().navigate(R.id.loginFragment2)
+            (activity as ChangeToolbarTitle).showToolbar(false)
+        }
+    }
+
+    private fun createDestination(){
+        tvTambahTempat.setOnClickListener {
+           findNavController().navigate(R.id.createDestination)
             (activity as ChangeToolbarTitle).showToolbar(false)
         }
     }

@@ -5,4 +5,92 @@
         <item>@color/colorPrimaryGray</item>
         <item>@color/colorPrimaryGray</item>
     </array>
+
+    <string-array name="menu_kategori">
+        <item>Tempat Wisata</item>
+        <item>Tempat Penginapan</item>
+        <item>Tempat Kuliner</item>
+    </string-array>
+
+    <string-array name="menu_daerah">
+        <item>Andir</item>
+        <item>Antapani</item>
+        <item>Arcamanik</item>
+        <item>Astana Anyar</item>
+        <item>Babakan Ciparay</item>
+        <item>Bandung Kidul</item>
+        <item>Bandung Kulon</item>
+        <item>Bandung Wetan</item>
+        <item>Batununggal</item>
+        <item>Bojongloa</item>
+        <item>Braga</item>
+        <item>Buah Batu</item>
+        <item>Caringin</item>
+        <item>Cibadak</item>
+        <item>Cibaduyut</item>
+        <item>Cibeunying Kaler</item>
+        <item>Cibeunying Kidul</item>
+        <item>Cibiru</item>
+        <item>Cibuntu</item>
+        <item>Ciburial</item>
+        <item>Cicadas</item>
+        <item>Cicaheum</item>
+        <item>Cicendo</item>
+        <item>Cidadap</item>
+        <item>Cigondewah</item>
+        <item>Cihapit</item>
+        <item>Cihaurgeulis</item>
+        <item>Cijerah</item>
+        <item>Cikutra</item>
+        <item>Cinambo</item>
+        <item>Cipadung</item>
+        <item>Cipaganti</item>
+        <item>Ciroyom</item>
+        <item>Citarum</item>
+        <item>Ciumbeluit</item>
+        <item>Coblong</item>
+        <item>Dago</item>
+        <item>Garuda</item>
+        <item>Gedebage</item>
+        <item>Gegerkalong</item>
+        <item>Gempolsari</item>
+        <item>Hegarmanah</item>
+        <item>Husen Sastranegara</item>
+        <item>Jamika</item>
+        <item>Karang Anyar</item>
+        <item>Kebon Jeruk</item>
+        <item>Kiara Condong</item>
+        <item>Kopo</item>
+        <item>Lebakgede</item>
+        <item>Ledeng</item>
+        <item>Lengkong</item>
+        <item>Maleber</item>
+        <item>Mandalajati</item>
+        <item>Margahayu</item>
+        <item>Mekarwangi</item>
+        <item>Merdeka</item>
+        <item>Neglasari</item>
+        <item>Padasuka</item>
+        <item>Padjajaran</item>
+        <item>Panyileukan</item>
+        <item>Pasir Kaliki</item>
+        <item>Pasir Layung</item>
+        <item>Pasteur</item>
+        <item>Rancabolang</item>
+        <item>Rancasari</item>
+        <item>Regol</item>
+        <item>Sadang Serang</item>
+        <item>Sarijadi</item>
+        <item>Sekeloa</item>
+        <item>Sukahaji</item>
+        <item>Sukajadi</item>
+        <item>Sukaluyu</item>
+        <item>Sukamaju</item>
+        <item>Sukamulya</item>
+        <item>Sukaraja</item>
+        <item>Sukasari</item>
+        <item>Sumur Bandung</item>
+        <item>Tamansari</item>
+        <item>Ujung Berung</item>
+    </string-array>
 </resources>

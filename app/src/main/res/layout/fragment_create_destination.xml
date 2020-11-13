@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:tools="http://schemas.android.com/tools"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             tools:context=".destination.CreateDestination"
+             android:layout_margin="@dimen/_10sdp">
+
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/form1"
+            android:visibility="visible">
+
+        <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/buttonBackk"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/ic_arrow_back"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvTitleAdd"
+            android:text="Tambahkan Destinasimu"
+            style="@style/DarkBoldTextSmall"
+            android:textAlignment="center"
+            android:layout_marginTop="@dimen/_50sdp"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textTambahDestinasi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_25sdp"
+                android:layout_below="@+id/tvTitleAdd"
+                android:hint="Nama Destinasi"
+                android:visibility="visible"
+                android:background="@null"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+            <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/inputDestinasi"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:focusableInTouchMode="true"
+                    android:inputType="text"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textColorHint="@color/colorPrimaryGray"
+            />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textTambahDestinasi"
+                android:id="@+id/layoutSpinner"
+                android:clickable="true"
+                android:focusable="true">
+
+        <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/DarkRegText"
+                android:textColor="@color/colorPrimaryGrayDark"
+                android:text="@string/prompt"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:drawableEnd="@drawable/ic_arrow_right"
+                android:drawableRight="@drawable/ic_arrow_right"/>
+        </RelativeLayout>
+
+        <Spinner
+                android:id="@+id/spinnerAdd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_20sdp"
+                style="@style/SpinnerCustom"
+                android:layout_below="@id/textTambahDestinasi"
+                android:autofillHints="@string/prompt"
+                android:prompt="@string/prompt"
+                android:spinnerMode="dialog"
+                android:visibility="invisible"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_below="@id/layoutSpinner"
+            android:id="@+id/layoutDaerah"
+            android:clickable="true"
+            android:focusable="true">
+
+        <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/DarkRegText"
+                android:textColor="@color/colorPrimaryGrayDark"
+                android:text="@string/daerah"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:drawableEnd="@drawable/ic_arrow_right"
+                android:drawableRight="@drawable/ic_arrow_right"/>
+    </RelativeLayout>
+
+        <Spinner
+                android:id="@+id/spinnerDaerah"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_30sdp"
+                style="@style/SpinnerCustom"
+                android:layout_below="@id/layoutSpinner"
+                android:autofillHints="@string/daerah"
+                android:prompt="@string/daerah"
+                android:spinnerMode="dialog"
+                android:visibility="invisible"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnNext"
+                android:layout_width="@dimen/_120sdp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/spinnerDaerah"
+                android:background="@drawable/btn_white"
+                style="@style/DarkMedTextSmall"
+                android:text="Selanjutnya"
+                android:textAllCaps="false"
+                android:layout_marginTop="@dimen/_25sdp"
+                android:layout_centerHorizontal="true"
+        />
+    </RelativeLayout>
+
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/formWisata"
+                android:visibility="invisible">
+           <androidx.appcompat.widget.AppCompatTextView
+                   android:id="@+id/tvTitleDetail"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:text="Detail Tempat"
+                   style="@style/DarkBoldTextSmall"
+                   android:textAlignment="center"
+                   android:layout_marginTop="@dimen/_30sdp"
+           />
+
+        </RelativeLayout>
+</RelativeLayout>
