@@ -1,8 +1,7 @@
 <?php
 require_once('connection.php');
 
-$query = "SELECT * FROM hotel JOIN daerah
-ON hotel.no_daerah=daerah.no_daerah
+$query = "SELECT * FROM hotel
 JOIN range_harga
 ON hotel.no_range=range_harga.no_range";
 $res = mysqli_query($CON, $query);
@@ -16,7 +15,7 @@ if ($res != false) {
             'nama_hotel' => $row['nama_hotel'],
             'nama_daerah' => $row['nama_daerah'],
             'alamat_lengkap' => $row['alamat_lengkap'],
-            'detail_hotel' => $row['detail_hotel'],
+            'detail' => $row['detail'],
             'harga' => $row['harga'],
             'range_harga' => $row['range_harga'],
             'jumlah_kamar' => $row['jumlah_kamar'],

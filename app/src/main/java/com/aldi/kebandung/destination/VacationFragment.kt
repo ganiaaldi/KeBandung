@@ -124,7 +124,7 @@ class VacationFragment : Fragment() {
                             jsonObject.getString("nama_wisata"),
                             jsonObject.getString("nama_daerah"),
                             jsonObject.getString("alamat_lengkap"),
-                            jsonObject.getString("detail_wisata"),
+                            jsonObject.getString("detail"),
                             jsonObject.getString("nama_kategori_wisata"),
                             jsonObject.getString("jam_buka"),
                             jsonObject.getString("jam_tutup"),

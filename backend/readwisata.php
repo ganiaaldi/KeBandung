@@ -1,8 +1,7 @@
 <?php
 require_once('connection.php');
 
-$query = "SELECT * FROM wisata JOIN daerah
- ON wisata.no_daerah=daerah.no_daerah
+$query = "SELECT * FROM wisata
  JOIN kategori_wisata
  ON wisata.no_kategori_wisata=kategori_wisata.no_kategori_wisata";
 $res = mysqli_query($CON, $query);
@@ -16,8 +15,7 @@ if ($res != false) {
             'nama_wisata' => $row['nama_wisata'],
             'nama_daerah' => $row['nama_daerah'],
             'alamat_lengkap' => $row['alamat_lengkap'],
-            'detail_wisata' => $row['detail_wisata'],
-            'no_daerah' => $row['no_daerah'],
+            'detail' => $row['detail'],
             'nama_kategori_wisata' => $row['nama_kategori_wisata'],
             'jam_buka' => $row['jam_buka'],
             'jam_tutup' => $row['jam_tutup'],

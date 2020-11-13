@@ -141,7 +141,7 @@ class RestaurantFragment : Fragment() {
                             jsonObject.getString("nama_restaurant"),
                             jsonObject.getString("nama_daerah"),
                             jsonObject.getString("alamat_lengkap"),
-                            jsonObject.getString("detail_restaurant"),
+                            jsonObject.getString("detail"),
                             jsonObject.getString("nama_kategori_kuliner"),
                             jsonObject.getString("jam_buka"),
                             jsonObject.getString("jam_tutup"),

@@ -137,7 +137,7 @@ class HotelFragment : Fragment() {
                             jsonObject.getString("nama_hotel"),
                             jsonObject.getString("nama_daerah"),
                             jsonObject.getString("alamat_lengkap"),
-                            jsonObject.getString("detail_hotel"),
+                            jsonObject.getString("detail"),
                             jsonObject.getInt("harga"),
                             jsonObject.getString("range_harga"),
                             jsonObject.getInt("jumlah_kamar"),
