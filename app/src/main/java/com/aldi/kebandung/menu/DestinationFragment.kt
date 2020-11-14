@@ -4,10 +4,13 @@ package com.aldi.kebandung.menu
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 
 import com.aldi.kebandung.R
 import com.aldi.kebandung.adapter.DestinationPagerAdapter
+import com.aldi.kebandung.destination.CreateDestination
 import com.aldi.kebandung.etc.ChangeToolbarTitle
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_destination.*
 
 
@@ -27,6 +30,7 @@ class DestinationFragment : Fragment() {
         (activity as ChangeToolbarTitle).updateTitle("Destinasi")
         setHasOptionsMenu(true)
         createPager()
+        fab()
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -40,4 +44,10 @@ class DestinationFragment : Fragment() {
         destinationTabLayout.setupWithViewPager(destinationViewPager)
     }
 
+    fun fab(){
+        fab.setOnClickListener { view ->
+            findNavController().navigate(R.id.createDestination)
+            (activity as ChangeToolbarTitle).showToolbar(false)
+        }
+    }
 }
