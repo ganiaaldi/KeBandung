@@ -1,9 +1,7 @@
 <?php
 require_once('connection.php');
 
-$query = "SELECT * FROM restaurant
-JOIN kategori_kuliner
-ON restaurant.no_kategori_kuliner=kategori_kuliner.no_kategori_kuliner";
+$query = "SELECT * FROM restaurant";
 $res = mysqli_query($CON, $query);
 
 $result = array();

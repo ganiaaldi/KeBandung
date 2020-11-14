@@ -6,7 +6,6 @@ data class Hotel(
     var alamatLengkap: String = "",
     var detailHotel: String = "",
     var harga: Int = 0,
-    var rangeHarga: String = "",
     var jumlahKamar: Int = 0,
     var fasilitas: String = "",
     var gambarHotel: String = ""

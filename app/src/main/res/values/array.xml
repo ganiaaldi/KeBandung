@@ -93,4 +93,37 @@
         <item>Tamansari</item>
         <item>Ujung Berung</item>
     </string-array>
+
+    <string-array name="array_wisata">
+    <item>Taman</item>
+    <item>Wahana</item>
+    <item>Bukit</item>
+    <item>Hutan</item>
+    <item>Gunung</item>
+    <item>Pantai</item>
+    <item>Air Terjun</item>
+    <item>Kebun Binatang</item>
+    <item>Jalanan</item>
+    <item>Pemandian Air Panas</item>
+    <item>Museum</item>
+    <item>Makam</item>
+    <item>Situs Sejarah</item>
+    <item>DLL</item>
+</string-array>
+
+    <string-array name="array_kuliner">
+        <item>Fast Food</item>
+        <item>Seafood</item>
+        <item>Oleh-Oleh</item>
+        <item>Casual Dining</item>
+        <item>Cafe</item>
+        <item>Coffe Shop</item>
+        <item>Korea Food</item>
+        <item>Japan Food</item>
+        <item>Western Food</item>
+        <item>Nusantara Food</item>
+        <item>Oriental Food</item>
+        <item>Street Food</item>
+        <item>DLL</item>
+    </string-array>
 </resources>

@@ -139,7 +139,6 @@ class HotelFragment : Fragment() {
                             jsonObject.getString("alamat_lengkap"),
                             jsonObject.getString("detail"),
                             jsonObject.getInt("harga"),
-                            jsonObject.getString("range_harga"),
                             jsonObject.getInt("jumlah_kamar"),
                             jsonObject.getString("fasilitas"),
                             jsonObject.getString("gambar_hotel")
@@ -177,7 +176,7 @@ class HotelFragment : Fragment() {
       Toast.makeText(context, " "+data.namaHotel,Toast.LENGTH_SHORT).show()
        val args = DestinationFragmentDirections.actionDestinationFragmentToDetailFragment(nameHotel = data.namaHotel,
            daerahHotel = data.namaDaerah, alamatHotel = data.alamatLengkap, detailHotel = data.detailHotel,
-           hargaHotel = data.harga, rangeHotel = data.rangeHarga, jumlahKamarHotel = data.jumlahKamar,
+           hargaHotel = data.harga, jumlahKamarHotel = data.jumlahKamar,
            fasilitasHotel = data.fasilitas, gambarHotel = data.gambarHotel)
         findNavController().navigate(args)
     }

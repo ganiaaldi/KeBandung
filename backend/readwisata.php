@@ -1,9 +1,7 @@
 <?php
 require_once('connection.php');
 
-$query = "SELECT * FROM wisata
- JOIN kategori_wisata
- ON wisata.no_kategori_wisata=kategori_wisata.no_kategori_wisata";
+$query = "SELECT * FROM wisata";
 $res = mysqli_query($CON, $query);
 
 $result = array();
