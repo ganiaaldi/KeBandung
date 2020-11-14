@@ -1,16 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             xmlns:tools="http://schemas.android.com/tools"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent"
-             tools:context=".destination.CreateDestination"
-             android:layout_margin="@dimen/_10sdp">
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" xmlns:app="http://schemas.android.com/apk/res-auto"
+            tools:context=".destination.CreateDestination"
+            android:fillViewport="true">
+
+<RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_10sdp">
+
 
     <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:id="@+id/form1"
-            android:visibility="visible">
+            android:visibility="invisible">
 
         <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/buttonBackk"
@@ -131,8 +137,9 @@
         <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/formWisata"
+                android:id="@+id/formDetail"
                 android:visibility="invisible">
+
            <androidx.appcompat.widget.AppCompatTextView
                    android:id="@+id/tvTitleDetail"
                    android:layout_width="match_parent"
@@ -140,8 +147,301 @@
                    android:text="Detail Tempat"
                    style="@style/DarkBoldTextSmall"
                    android:textAlignment="center"
-                   android:layout_marginTop="@dimen/_30sdp"
+                   android:layout_marginTop="@dimen/_15sdp"
            />
 
+            <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textTambahAlamatLengkap"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_25sdp"
+                    android:layout_below="@+id/tvTitleDetail"
+                    android:hint="Alamat Lengkap"
+                    android:visibility="visible"
+                    android:background="@null"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/inputAlamatLengkap"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:focusableInTouchMode="true"
+                        android:inputType="text"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textColorHint="@color/colorPrimaryGray"
+                />
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textTambahDetail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_25sdp"
+                    android:layout_below="@+id/textTambahAlamatLengkap"
+                    android:hint="Detail/Keterangan Destinasi"
+                    android:visibility="visible"
+                    android:background="@null"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/inputDetail"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:focusableInTouchMode="true"
+                        android:inputType="textMultiLine"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textColorHint="@color/colorPrimaryGray"
+                        android:maxLines="10"
+                        android:maxEms="10"
+                />
+            </com.google.android.material.textfield.TextInputLayout>
+            <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnNext2"
+                    android:layout_width="@dimen/_120sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/textTambahDetail"
+                    android:background="@drawable/btn_white"
+                    style="@style/DarkMedTextSmall"
+                    android:text="Selanjutnya"
+                    android:textAllCaps="false"
+                    android:layout_marginTop="@dimen/_25sdp"
+                    android:layout_centerHorizontal="true"
+            />
+
+            <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnBack"
+                    android:layout_width="@dimen/_120sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/btnNext2"
+                    android:background="@drawable/btn_white"
+                    style="@style/DarkMedTextSmall"
+                    android:text="Kembali"
+                    android:textAllCaps="false"
+                    android:layout_marginTop="@dimen/_25sdp"
+                    android:layout_centerHorizontal="true"
+            />
+
+        </RelativeLayout>
+
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/formDetailWisataRestaurant"
+            android:visibility="invisible">
+
+        <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvTitleDetaill"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Detail Tempat"
+                style="@style/DarkBoldTextSmall"
+                android:textAlignment="center"
+                android:layout_marginTop="@dimen/_15sdp"
+        />
+
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_below="@id/tvTitleDetaill"
+                android:id="@+id/layoutKategori"
+                android:clickable="true"
+                android:focusable="true">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/DarkRegText"
+                    android:textColor="@color/colorPrimaryGrayDark"
+                    android:text="@string/kategori_tempat"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:drawableEnd="@drawable/ic_arrow_right"
+                    android:drawableRight="@drawable/ic_arrow_right"/>
+        </RelativeLayout>
+
+        <Spinner
+                android:id="@+id/spinnerKategori"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_30sdp"
+                style="@style/SpinnerCustom"
+                android:layout_below="@id/tvTitleDetaill"
+                android:autofillHints="@string/kategori_tempat"
+                android:prompt="@string/kategori_tempat"
+                android:spinnerMode="dialog"
+                android:visibility="invisible"/>
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/titleJam"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/spinnerKategori"
+                    style="@style/DarkRegText"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:text="Jam Operasional"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/titleJamBuka"
+                android:layout_width="@dimen/_140sdp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/titleJam"
+                style="@style/DarkRegTextSmall"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:textColor="@color/colorPrimaryDark"
+                android:text="Jam Buka"
+                android:textAlignment="center"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/titleJamTutup"
+                android:layout_width="@dimen/_140sdp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/titleJam"
+                style="@style/DarkRegTextSmall"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:textColor="@color/colorPrimaryDark"
+                android:text="Jam Tutup"
+                android:layout_toRightOf="@id/titleJamBuka"
+                android:layout_toEndOf="@id/titleJamBuka"
+                android:textAlignment="center"/>
+
+        <TimePicker
+                android:id="@+id/timePickerBuka"
+                android:layout_width="@dimen/_150sdp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/titleJamBuka"
+                android:timePickerMode="spinner"
+                tools:targetApi="lollipop"
+               />
+
+        <TimePicker
+                android:id="@+id/timePickerTutup"
+                android:layout_width="@dimen/_150sdp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/titleJamTutup"
+                android:timePickerMode="spinner"
+                tools:targetApi="lollipop"
+                android:layout_toRightOf="@id/titleJamBuka"
+        />
+
+        <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textTambahHarga"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_below="@id/timePickerBuka"
+                android:hint="Harga/Tiket Masuk"
+                android:visibility="visible"
+                android:background="@null"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+            <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/inputHarga"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:focusableInTouchMode="true"
+                    android:inputType="number"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textColorHint="@color/colorPrimaryGray"
+            />
+
+        </com.google.android.material.textfield.TextInputLayout>
+        <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnNext3"
+                android:layout_width="@dimen/_120sdp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textTambahHarga"
+                android:background="@drawable/btn_white"
+                style="@style/DarkMedTextSmall"
+                android:text="Selanjutnya"
+                android:textAllCaps="false"
+                android:layout_marginTop="@dimen/_25sdp"
+                android:layout_centerHorizontal="true"
+        />
+
+        <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnBack2"
+                android:layout_width="@dimen/_120sdp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/btnNext3"
+                android:background="@drawable/btn_white"
+                style="@style/DarkMedTextSmall"
+                android:text="Kembali"
+                android:textAllCaps="false"
+                android:layout_marginTop="@dimen/_25sdp"
+                android:layout_centerHorizontal="true"
+        />
+    </RelativeLayout>
+
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/formPhoto"
+                android:visibility="visible">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvTitlePhoto"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Unggah Foto Tempat Destinasi"
+                    style="@style/DarkBoldTextSmall"
+                    android:textAlignment="center"
+                    android:layout_marginTop="@dimen/_15sdp"
+            />
+
+            <!-- Upload Image-->
+            <RelativeLayout
+                    android:id="@+id/uploadPhoto"
+                    android:layout_width="@dimen/_150sdp"
+                    android:layout_height="@dimen/_150sdp"
+                    android:background="@drawable/bg_upload_image"
+                    android:layout_below="@id/tvTitlePhoto"
+                    android:layout_marginTop="@dimen/_50sdp"
+                    android:layout_centerHorizontal="true"
+                    android:alpha="0.4">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/imgUploadPhoto"
+                        android:background="@drawable/ic_image_add"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="@dimen/_30sdp"/>
+            </RelativeLayout>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/uploadPhotoDone"
+                    android:layout_width="@dimen/_150sdp"
+                    android:layout_height="@dimen/_150sdp"
+                    android:layout_below="@id/tvTitlePhoto"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/_50sdp"
+            >
+            </androidx.appcompat.widget.AppCompatImageView>
+            <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnNext4"
+                    android:layout_width="@dimen/_120sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/uploadPhotoDone"
+                    android:background="@drawable/btn_white"
+                    style="@style/DarkMedTextSmall"
+                    android:text="Selanjutnya"
+                    android:textAllCaps="false"
+                    android:layout_marginTop="@dimen/_25sdp"
+                    android:layout_centerHorizontal="true"
+            />
+
+            <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnBack3"
+                    android:layout_width="@dimen/_120sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/btnNext4"
+                    android:background="@drawable/btn_white"
+                    style="@style/DarkMedTextSmall"
+                    android:text="Kembali"
+                    android:textAllCaps="false"
+                    android:layout_marginTop="@dimen/_25sdp"
+                    android:layout_centerHorizontal="true"
+            />
         </RelativeLayout>
 </RelativeLayout>
+</ScrollView>

@@ -1,0 +1,19 @@
+
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto">
+
+<item>
+    <shape xmlns:android="http://schemas.android.com/apk/res/android" >
+
+        <solid android:color="@color/colorPrimary" />
+        <corners android:radius="5dp" />
+        <stroke   android:color="#090909"
+                  android:width="3dp"
+                  android:dashGap="15dp"
+                  android:dashWidth="5dp"/>
+
+
+
+    </shape>
+</item>
+</layer-list>

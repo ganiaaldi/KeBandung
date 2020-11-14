@@ -25,5 +25,6 @@
     <string name="password_confirmation">Konfirmasi Password</string>
     <string name="prompt">Kategori Tempat</string>
     <string name="daerah">Daerah Destinasi</string>
-
+    <string name="kategori_tempat">Kategori Tempat</string>
+    <string name="cancel">Cancel</string>
 </resources>

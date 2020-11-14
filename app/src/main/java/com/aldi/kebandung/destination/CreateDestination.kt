@@ -15,10 +15,14 @@ import androidx.core.view.isVisible
 
 import com.aldi.kebandung.R
 import kotlinx.android.synthetic.main.fragment_create_destination.*
+import android.widget.TimePicker
+
+
 
 class CreateDestination : Fragment() {
     var selectedSpinner : String? = null
     var selectedSpinnerr : String? = null
+    var selectedSpinnerrr : String? = null
     //var listDaerah = ArrayList<Daerah>()
 
     override fun onCreateView(
@@ -33,7 +37,15 @@ class CreateDestination : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         spinnerCreate()
         createDestination()
+        settingClock()
         //fan()
+    }
+
+    private fun settingClock() {
+        var jamBuka = timePickerBuka as TimePicker
+        var jamTutup = timePickerTutup as TimePicker
+        jamBuka.setIs24HourView(true)
+        jamTutup.setIs24HourView(true)
     }
 
     fun spinnerCreate() {
@@ -64,6 +76,7 @@ class CreateDestination : Fragment() {
                 layoutSpinner.visibility = View.VISIBLE
             }
         }
+
         layoutDaerah.setOnClickListener {
             if (layoutDaerah.isVisible) {
                 layoutDaerah.visibility = View.INVISIBLE
@@ -82,6 +95,39 @@ class CreateDestination : Fragment() {
                     override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
                         val getSpinnerr = itemSpinnerr?.getItem(p2).toString()
                         selectedSpinnerr = getSpinnerr
+                    }
+
+                    override fun onNothingSelected(parent: AdapterView<*>?) {
+                        Toast.makeText(getActivity(),"Pilih Daerah",Toast.LENGTH_SHORT).show()
+                    }
+                }
+            } else {
+                layoutDaerah.visibility = View.VISIBLE
+            }
+        }
+
+        layoutKategori.setOnClickListener {
+            if (layoutKategori.isVisible) {
+                layoutKategori.visibility = View.INVISIBLE
+
+                val itemSpinnerrr = context?.let { it1 ->
+                    ArrayAdapter(
+                        it1,
+                        android.R.layout.simple_spinner_dropdown_item,
+                        if(selectedSpinner == "Tempat Wisata"){
+                            resources.getStringArray(R.array.array_wisata)
+                        } else{
+                            resources.getStringArray(R.array.array_kuliner)
+                        }
+                    )
+                }
+                spinnerKategori.adapter = itemSpinnerrr
+                spinnerKategori.performClick()
+                spinnerKategori.visibility = View.VISIBLE
+                spinnerKategori.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+                    override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+                        val getSpinnerrr = itemSpinnerrr?.getItem(p2).toString()
+                        selectedSpinnerrr = getSpinnerrr
                     }
 
                     override fun onNothingSelected(parent: AdapterView<*>?) {
