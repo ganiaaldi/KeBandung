@@ -1,7 +1,9 @@
 package com.aldi.kebandung.destination
 
 
+import android.annotation.SuppressLint
 import android.app.ProgressDialog
+import android.app.TimePickerDialog
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -16,13 +18,22 @@ import androidx.core.view.isVisible
 import com.aldi.kebandung.R
 import kotlinx.android.synthetic.main.fragment_create_destination.*
 import android.widget.TimePicker
+import androidx.activity.addCallback
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.navigateUp
+import kotlinx.android.synthetic.main.fragment_create_destination.view.*
+import java.text.SimpleDateFormat
+import java.util.*
 
 
+class CreateDestination : Fragment(){
 
-class CreateDestination : Fragment() {
     var selectedSpinner : String? = null
     var selectedSpinnerr : String? = null
     var selectedSpinnerrr : String? = null
+    var jamBukaOutput : String? = null
+    var jamTutupOutput : String? = null
     //var listDaerah = ArrayList<Daerah>()
 
     override fun onCreateView(
@@ -37,16 +48,33 @@ class CreateDestination : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         spinnerCreate()
         createDestination()
-        settingClock()
+        OnClickTime()
+        buttonPressed()
+
+
         //fan()
     }
 
-    private fun settingClock() {
+    private fun OnClickTime() {
         var jamBuka = timePickerBuka as TimePicker
         var jamTutup = timePickerTutup as TimePicker
         jamBuka.setIs24HourView(true)
         jamTutup.setIs24HourView(true)
+        val cal = Calendar.getInstance()
+
+        //jamBukaOutput = SimpleDateFormat("HH:MM").format(cal.time).toString()
+        //jamTutupOutput = SimpleDateFormat("HH:MM").format(cal.time).toString()
+
+        jamBuka.setOnTimeChangedListener{
+                 _, hour, minute->
+            jamBukaOutput = String.format("%02d:%02d:00", hour, minute)
+         }
+        jamTutup.setOnTimeChangedListener{
+                _, hour, minute->
+            jamTutupOutput = String.format("%02d:%02d:00", hour, minute)
+        }
     }
+
 
     fun spinnerCreate() {
         layoutSpinner.setOnClickListener {
@@ -148,6 +176,94 @@ class CreateDestination : Fragment() {
         }
     }
 
+    fun buttonPressed(){
+        buttonBackk.setOnClickListener {
+            findNavController().navigateUp()
+        }
+        btnNext.setOnClickListener {
+            if(selectedSpinner != null && selectedSpinnerr != null && inputDestinasi.text.toString() != "")
+            {
+            form1.visibility = View.INVISIBLE
+            formDetail.visibility = View.VISIBLE
+            Toast.makeText(context,"${selectedSpinner.toString()},${selectedSpinnerr.toString()},${inputDestinasi.text.toString()}",Toast.LENGTH_LONG).show()
+        } else{
+                Toast.makeText(context,"Isi semua form terlebih dahulu",Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        btnBack.setOnClickListener {
+            form1.visibility = View.VISIBLE
+            formDetail.visibility = View.INVISIBLE
+        }
+        btnNext2.setOnClickListener {
+            if(inputDetail.text.toString() != ""  && inputAlamatLengkap.text.toString() != "" )
+            {
+                formDetail.visibility = View.INVISIBLE
+                if (selectedSpinner == "Tempat Penginapan") {
+                    formDetailHotel.visibility = View.VISIBLE
+                } else {
+                    formDetailWisataRestaurant.visibility = View.VISIBLE
+                }
+                Toast.makeText(context,"${inputDetail.text.toString()},${inputAlamatLengkap.text.toString()}",Toast.LENGTH_LONG).show()
+            } else{
+                Toast.makeText(context,"Isi semua form terlebih dahulu",Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        btnBack2.setOnClickListener {
+            formDetail.visibility = View.VISIBLE
+            formDetailHotel.visibility = View.INVISIBLE
+            formDetailWisataRestaurant.visibility = View.INVISIBLE
+        }
+
+        btnNext3.setOnClickListener {
+            if(inputHarga.text.toString() != "" && timePickerTutup != null && timePickerTutup != null && selectedSpinnerrr != null) {
+                formDetailHotel.visibility = View.INVISIBLE
+                formDetailWisataRestaurant.visibility = View.INVISIBLE
+                formPhoto.visibility = View.VISIBLE
+                Toast.makeText(context,"${inputHarga.text.toString()}," +
+                        "${jamBukaOutput},${jamTutupOutput},${selectedSpinnerrr.toString()}",Toast.LENGTH_LONG).show()
+            } else{
+                Toast.makeText(context,"Isi semua form terlebih dahulu",Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        btnBack3.setOnClickListener{
+            formDetail.visibility = View.VISIBLE
+            formDetailHotel.visibility = View.INVISIBLE
+            formDetailWisataRestaurant.visibility = View.INVISIBLE
+        }
+
+        btnNext4.setOnClickListener {
+            if(inputHargaa.text.toString() != "" && inputJumlahKamar.text.toString() != "" &&
+                inputFasilitas.text.toString() != ""){
+                formPhoto.visibility = View.VISIBLE
+                formDetailHotel.visibility = View.INVISIBLE
+                formDetailWisataRestaurant.visibility = View.INVISIBLE
+                Toast.makeText(context,"${inputHargaa.text.toString()}," +
+                        "${inputJumlahKamar.text.toString()},${inputFasilitas.text.toString()}",Toast.LENGTH_LONG).show()
+            }
+            else{
+                Toast.makeText(context,"Isi semua form terlebih dahulu",Toast.LENGTH_SHORT).show()
+            }
+        }
+        btnBack4.setOnClickListener {
+            formDetail.visibility = View.VISIBLE
+            formPhoto.visibility = View.INVISIBLE
+        }
+
+        btnNext5.setOnClickListener {
+            if(uploadPhotoDone != null){
+                formPhoto.visibility = View.VISIBLE
+                formDetailHotel.visibility = View.INVISIBLE
+                formDetailWisataRestaurant.visibility = View.INVISIBLE
+                Toast.makeText(context,"${uploadPhotoDone}",Toast.LENGTH_LONG).show()
+            }
+            else{
+                Toast.makeText(context,"Masukan gambar terlebih dahulu",Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
     /**
     fun fan(){
         val loading = ProgressDialog(context)
