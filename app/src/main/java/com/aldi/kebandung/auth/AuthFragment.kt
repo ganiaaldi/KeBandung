@@ -10,6 +10,8 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 
 import com.aldi.kebandung.R
+import com.aldi.kebandung.etc.AppPreferences
+import com.aldi.kebandung.etc.AppPreferences.username
 import kotlinx.android.synthetic.main.fragment_auth.*
 
 class AuthFragment : Fragment() {
@@ -24,6 +26,7 @@ class AuthFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        AppPreferences.init(context!!)
         authButton()
     }
 
@@ -37,6 +40,8 @@ class AuthFragment : Fragment() {
         }
 
         btnLoginGuest.setOnClickListener {
+            val username = "Guest"
+            AppPreferences.username = username
             findNavController().navigate(R.id.mainActivity)
         }
     }

@@ -8,6 +8,9 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 
 import com.aldi.kebandung.R
+import com.aldi.kebandung.etc.AppPreferences
+import com.aldi.kebandung.etc.AppPreferences.preferences
+import com.aldi.kebandung.etc.AppPreferences.username
 import com.aldi.kebandung.etc.ChangeToolbarTitle
 import kotlinx.android.synthetic.main.fragment_account.*
 
@@ -28,7 +31,9 @@ class AccountFragment : Fragment() {
         (activity as ChangeToolbarTitle).showToolbar(true)
         (activity as ChangeToolbarTitle).updateTitle("Akun")
         buttonLogin()
+        buttonLogout()
         createDestination()
+        tvProfileUsername.text = username
     }
 
     fun buttonLogin(){
@@ -42,6 +47,16 @@ class AccountFragment : Fragment() {
         tvTambahTempat.setOnClickListener {
            findNavController().navigate(R.id.createDestination)
             (activity as ChangeToolbarTitle).showToolbar(false)
+        }
+    }
+
+    fun buttonLogout(){
+        btnLogout.setOnClickListener {
+            (activity as ChangeToolbarTitle).showToolbar(false)
+            AppPreferences.isLogin = false
+            preferences.edit().remove("username").apply()
+            preferences.edit().remove("password").apply()
+            findNavController().navigate(R.id.authFragment)
         }
     }
 }

@@ -14,5 +14,6 @@ class Endpoint {
         val READDAERAH = SERVER +"readdaerah.php"
         val CREATERESTAURANT = SERVER +"createrestaurant.php"
         val CREATEHOTEL = SERVER +"createhotel.php"
+        val GETID = SERVER +"getid.php"
     }
 }
