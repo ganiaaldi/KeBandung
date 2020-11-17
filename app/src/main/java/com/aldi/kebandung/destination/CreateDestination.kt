@@ -22,7 +22,13 @@ import androidx.activity.addCallback
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.navigateUp
+import com.aldi.kebandung.etc.Endpoint
+import com.androidnetworking.AndroidNetworking
+import com.androidnetworking.common.Priority
+import com.androidnetworking.error.ANError
+import com.androidnetworking.interfaces.JSONObjectRequestListener
 import kotlinx.android.synthetic.main.fragment_create_destination.view.*
+import org.json.JSONObject
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -50,8 +56,6 @@ class CreateDestination : Fragment(){
         createDestination()
         OnClickTime()
         buttonPressed()
-
-
         //fan()
     }
 
@@ -185,7 +189,7 @@ class CreateDestination : Fragment(){
             {
             form1.visibility = View.INVISIBLE
             formDetail.visibility = View.VISIBLE
-            Toast.makeText(context,"${selectedSpinner.toString()},${selectedSpinnerr.toString()},${inputDestinasi.text.toString()}",Toast.LENGTH_LONG).show()
+           // Toast.makeText(context,"${selectedSpinner.toString()},${selectedSpinnerr.toString()},${inputDestinasi.text.toString()}",Toast.LENGTH_LONG).show()
         } else{
                 Toast.makeText(context,"Isi semua form terlebih dahulu",Toast.LENGTH_SHORT).show()
             }
@@ -204,7 +208,7 @@ class CreateDestination : Fragment(){
                 } else {
                     formDetailWisataRestaurant.visibility = View.VISIBLE
                 }
-                Toast.makeText(context,"${inputDetail.text.toString()},${inputAlamatLengkap.text.toString()}",Toast.LENGTH_LONG).show()
+             //   Toast.makeText(context,"${inputDetail.text.toString()},${inputAlamatLengkap.text.toString()}",Toast.LENGTH_LONG).show()
             } else{
                 Toast.makeText(context,"Isi semua form terlebih dahulu",Toast.LENGTH_SHORT).show()
             }
@@ -221,8 +225,8 @@ class CreateDestination : Fragment(){
                 formDetailHotel.visibility = View.INVISIBLE
                 formDetailWisataRestaurant.visibility = View.INVISIBLE
                 formPhoto.visibility = View.VISIBLE
-                Toast.makeText(context,"${inputHarga.text.toString()}," +
-                        "${jamBukaOutput},${jamTutupOutput},${selectedSpinnerrr.toString()}",Toast.LENGTH_LONG).show()
+             //   Toast.makeText(context,"${inputHarga.text.toString()}," +
+                  //      "${jamBukaOutput},${jamTutupOutput},${selectedSpinnerrr.toString()}",Toast.LENGTH_LONG).show()
             } else{
                 Toast.makeText(context,"Isi semua form terlebih dahulu",Toast.LENGTH_SHORT).show()
             }
@@ -240,8 +244,8 @@ class CreateDestination : Fragment(){
                 formPhoto.visibility = View.VISIBLE
                 formDetailHotel.visibility = View.INVISIBLE
                 formDetailWisataRestaurant.visibility = View.INVISIBLE
-                Toast.makeText(context,"${inputHargaa.text.toString()}," +
-                        "${inputJumlahKamar.text.toString()},${inputFasilitas.text.toString()}",Toast.LENGTH_LONG).show()
+                //Toast.makeText(context,"${inputHargaa.text.toString()}," +
+                       // "${inputJumlahKamar.text.toString()},${inputFasilitas.text.toString()}",Toast.LENGTH_LONG).show()
             }
             else{
                 Toast.makeText(context,"Isi semua form terlebih dahulu",Toast.LENGTH_SHORT).show()
@@ -253,7 +257,8 @@ class CreateDestination : Fragment(){
         }
 
         btnNext5.setOnClickListener {
-            if(uploadPhotoDone != null){
+          /**
+           if(uploadPhotoDone != null){
                 formPhoto.visibility = View.VISIBLE
                 formDetailHotel.visibility = View.INVISIBLE
                 formDetailWisataRestaurant.visibility = View.INVISIBLE
@@ -261,49 +266,126 @@ class CreateDestination : Fragment(){
             }
             else{
                 Toast.makeText(context,"Masukan gambar terlebih dahulu",Toast.LENGTH_SHORT).show()
-            }
+            }**/
+            fanCreateDestination()
         }
     }
-    /**
-    fun fan(){
+
+    fun fanCreateDestination(){
         val loading = ProgressDialog(context)
-        loading.setMessage("Memuat data...")
+        loading.setMessage("Menambahkan destinasi..")
         loading.show()
-        AndroidNetworking.get(Endpoint.READDAERAH)
-            .setPriority(Priority.HIGH)
-            .build()
-            .getAsJSONObject(object : JSONObjectRequestListener {
+        if (selectedSpinner == "Tempat Wisata"){
+            AndroidNetworking.post(Endpoint.CREATEWISATA)
+                .addBodyParameter("nama_wisata",inputDestinasi.text.toString())
+                .addBodyParameter("nama_daerah",selectedSpinner.toString())
+                .addBodyParameter("alamat_lengkap",inputAlamatLengkap.text.toString())
+                .addBodyParameter("detail",inputDetail.text.toString())
+                .addBodyParameter("nama_kategori_wisata",selectedSpinnerr.toString())
+                .addBodyParameter("jam_buka",jamBukaOutput)
+                .addBodyParameter("jam_tutup",jamTutupOutput)
+                .addBodyParameter("harga",inputHarga.text.toString())
+                .addBodyParameter("gambar_wisata","")
+                .setPriority(Priority.MEDIUM)
+                .build()
+                .getAsJSONObject(object : JSONObjectRequestListener {
 
-                override fun onResponse(response: JSONObject?) {
-                    listDaerah.clear()
+                    override fun onResponse(response: JSONObject?) {
 
-                    val jsonArray = response?.optJSONArray("result")
-
-                    if(jsonArray?.length() == 0){
                         loading.dismiss()
-                        Toast.makeText(context,"Data Daerah Kosong",Toast.LENGTH_SHORT).show()
-                    }
+                        Toast.makeText(context,response?.getString("message"),Toast.LENGTH_SHORT).show()
 
-                    for(i in 0 until jsonArray?.length()!!){
+                        if(response?.getString("message")?.contains("successfully")!!){
+                            this@CreateDestination.activity?.finish()
+                            findNavController().navigate(R.id.destinationFragment)
+                        }
+
+                    }
+                    override fun onError(anError: ANError?) {
                         loading.dismiss()
-                        val jsonObject = jsonArray?.optJSONObject(i)
-                        listDaerah.add(
-                            Daerah(
-                                jsonObject.getString("nama_daerah")
-                            )
-
-                        )
+                        Log.d("ONERROR",anError?.errorDetail?.toString())
+                         //Toast.makeText(context,"Connection Failure", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context,"Destinasi berhasil didaftarkan", Toast.LENGTH_SHORT).show()
+                        //this@RegisterFragment.activity?.finish()
+                        findNavController().navigate(R.id.destinationFragment)
                     }
+                })
+        } else if(selectedSpinner == "Tempat Kuliner"){
+            AndroidNetworking.post(Endpoint.CREATERESTAURANT)
+                .addBodyParameter("nama_restaurant",inputDestinasi.text.toString())
+                .addBodyParameter("nama_daerah",selectedSpinner.toString())
+                .addBodyParameter("alamat_lengkap",inputAlamatLengkap.text.toString())
+                .addBodyParameter("detail",inputDetail.text.toString())
+                .addBodyParameter("nama_kategori_kuliner",selectedSpinnerrr.toString())
+                .addBodyParameter("jam_buka",jamBukaOutput)
+                .addBodyParameter("jam_tutup",jamTutupOutput)
+                .addBodyParameter("gambar_restaurant","")
+                .setPriority(Priority.MEDIUM)
+                .build()
+                .getAsJSONObject(object : JSONObjectRequestListener {
 
-                }
+                    override fun onResponse(response: JSONObject?) {
 
-                override fun onError(anError: ANError?) {
-                    Log.d("ONERROR",anError?.errorDetail?.toString())
-                    Toast.makeText(context,"Connection Failure",Toast.LENGTH_SHORT).show()
-                }
+                        loading.dismiss()
+                        Toast.makeText(context,response?.getString("message"),Toast.LENGTH_SHORT).show()
 
-            })
+                        if(response?.getString("message")?.contains("successfully")!!){
+                            this@CreateDestination.activity?.finish()
+                            findNavController().navigate(R.id.destinationFragment)
+                        }
+
+                    }
+                    override fun onError(anError: ANError?) {
+                        loading.dismiss()
+                        Log.d("ONERROR",anError?.errorDetail?.toString())
+                        //  Toast.makeText(context,"Connection Failure", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context,"Destinasi berhasil didaftarkan", Toast.LENGTH_SHORT).show()
+                        //this@RegisterFragment.activity?.finish()
+                        findNavController().navigate(R.id.destinationFragment)
+                    }
+                })
+        } else{
+            AndroidNetworking.post(Endpoint.CREATEHOTEL)
+                .addBodyParameter("nama_hotel",inputDestinasi.text.toString())
+                .addBodyParameter("nama_daerah",selectedSpinner.toString())
+                .addBodyParameter("alamat_lengkap",inputAlamatLengkap.text.toString())
+                .addBodyParameter("detail",inputDetail.text.toString())
+                .addBodyParameter("harga",inputHargaa.text.toString())
+                .addBodyParameter("jumlah_kamar",inputJumlahKamar.text.toString())
+                .addBodyParameter("fasilitas",inputFasilitas.text.toString())
+                .addBodyParameter("gambar_hotel","")
+                .setPriority(Priority.MEDIUM)
+                .build()
+                .getAsJSONObject(object : JSONObjectRequestListener {
+
+                    override fun onResponse(response: JSONObject?) {
+
+                        loading.dismiss()
+                        Toast.makeText(context,response?.getString("message"),Toast.LENGTH_SHORT).show()
+
+                        if(response?.getString("message")?.contains("successfully")!!){
+                            this@CreateDestination.activity?.finish()
+                            findNavController().navigate(R.id.destinationFragment)
+                        }
+
+                    }
+                    override fun onError(anError: ANError?) {
+                        loading.dismiss()
+                        Log.d("ONERROR",anError?.errorDetail?.toString())
+                        //  Toast.makeText(context,"Connection Failure", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context,"Destinasi berhasil didaftarkan", Toast.LENGTH_SHORT).show()
+                        //this@RegisterFragment.activity?.finish()
+                        findNavController().navigate(R.id.destinationFragment)
+                    }
+                })
+        }
+
+          //  .addBodyParameter("email",inputEmail.text.toString())
+          //  .addBodyParameter("username",inputUsername.text.toString())
+         //   .addBodyParameter("nama_lengkap",inputUsernameFull.text.toString())
+          //  .addBodyParameter("kata_sandi",inputPassword.text.toString())
+
     }
-     **/
+
 
 }

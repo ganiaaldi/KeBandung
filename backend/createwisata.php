@@ -11,7 +11,9 @@ $harga = $_POST['harga'];
 $gambar_wisata  = $_FILES['gambar_wisata']['name'];
  $tmp   = $_FILES['gambar_wisata']['tmp_name'];
  $path = "images/".$gambar_wisata;
-
+ if($gambar_wisata == null){
+  $gambar_wisata = "icon2.png";
+ }
  if(move_uploaded_file($tmp, $path)){
 
 if(!$nama_wisata || !$nama_daerah || !$alamat_lengkap || !$detail
@@ -32,5 +34,24 @@ if($query){
   }
 
 }
+ } else {
+   
+if(!$nama_wisata || !$nama_daerah || !$alamat_lengkap || !$detail
+|| !$nama_kategori_wisata || !$jam_buka || !$jam_tutup || !$harga)
+{
+ echo json_encode(array('message'=>'form harus terisi semua!'));
+}else{	
+$query = mysqli_query($CON, "INSERT INTO wisata VALUES
+('$no_wisata','$nama_wisata', '$nama_daerah', '$alamat_lengkap', '$detail','$nama_kategori_wisata', '$jam_buka', 
+'$jam_tutup', '$harga', '$gambar_wisata')");
+if($query){
+   echo json_encode(array('message'=>'Data wisata berhasil ditambahkan!'));
+ }else{
+   echo json_encode(array('message'=>'Data wisata gagal ditambahkan!'));
+   //echo ("$nama_wisata,$nama_daerah, $alamat_lengkap, $detail, $nama_kategori_wisata, 
+   //$jam_buka, $jam_tutup, $harga, $gambar_wisata");
+   echo("Error description: " .mysqli_error($CON));
  }
+ }
+}
 ?> 
