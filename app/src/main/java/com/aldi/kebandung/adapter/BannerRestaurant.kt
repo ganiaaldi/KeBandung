@@ -7,11 +7,12 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.aldi.kebandung.R
-import com.aldi.kebandung.model.Dummy
+import com.aldi.kebandung.etc.Endpoint
+import com.aldi.kebandung.model.Restaurant
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 
-class DummyAdapter (val listVacation: ArrayList<Dummy>) : RecyclerView.Adapter<DummyAdapter.ListViewHolder> () {
+class BannerRestaurant (val listVacation: ArrayList<Restaurant>) : RecyclerView.Adapter<BannerRestaurant.ListViewHolder> () {
     override fun getItemCount(): Int {
         return listVacation.size
     }
@@ -23,7 +24,7 @@ class DummyAdapter (val listVacation: ArrayList<Dummy>) : RecyclerView.Adapter<D
     }
 
     interface OnItemClickCallback {
-        fun onItemClicked(data: Dummy)
+        fun onItemClicked(data: Restaurant)
     }
 
     inner class ListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -33,18 +34,19 @@ class DummyAdapter (val listVacation: ArrayList<Dummy>) : RecyclerView.Adapter<D
     }
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, i: Int): ListViewHolder {
-        val view: View = LayoutInflater.from(viewGroup.context).inflate(R.layout.item_content, viewGroup, false)
+        val view: View = LayoutInflater.from(viewGroup.context).inflate(R.layout.item_banner, viewGroup, false)
         return ListViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
         val rekomendasi = listVacation[position]
+        val url = Endpoint.GAMBAR+rekomendasi.gambarRestaurant
         Glide.with(holder.itemView.context)
-            .load(rekomendasi.photoVacation)
+            .load(url)
             .apply(RequestOptions())
             .into(holder.imgVacation)
-        holder.namaVacation.text = rekomendasi.nameVacation
-        holder.lokasiVacation.text = rekomendasi.alamatVacation
+        holder.namaVacation.text = rekomendasi.namaRestaurant
+        holder.lokasiVacation.text = rekomendasi.namaDaerah
         holder.itemView.setOnClickListener {
             onItemClickCallback.onItemClicked(listVacation[holder.adapterPosition])
         }
