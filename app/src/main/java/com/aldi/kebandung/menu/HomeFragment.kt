@@ -26,6 +26,8 @@ import com.androidnetworking.error.ANError
 import com.androidnetworking.interfaces.JSONObjectRequestListener
 import kotlinx.android.synthetic.main.fragment_home.*
 import org.json.JSONObject
+import java.util.*
+import kotlin.collections.ArrayList
 
 class HomeFragment : Fragment() {
 
@@ -91,6 +93,7 @@ class HomeFragment : Fragment() {
 
                             loading.dismiss()
                             val adapter = WisataAdapter(listWisata)
+                            Collections.shuffle(listWisata)
                             adapter.notifyDataSetChanged()
 
                             rvPopuler.adapter = adapter
@@ -157,6 +160,7 @@ class HomeFragment : Fragment() {
 
                             loading.dismiss()
                             val adapter = BannerWisata(listWisata)
+                            Collections.shuffle(listWisata)
                             adapter.notifyDataSetChanged()
 
                             rvRekomendasi.adapter = adapter
@@ -222,6 +226,7 @@ class HomeFragment : Fragment() {
 
                             loading.dismiss()
                             val adapter = BannerHotel(listHotel)
+                            Collections.shuffle(listHotel)
                             adapter.notifyDataSetChanged()
 
                             rvPenginapan.adapter = adapter
@@ -287,6 +292,7 @@ class HomeFragment : Fragment() {
 
                             loading.dismiss()
                             val adapter = BannerRestaurant(listRestaurant)
+                            Collections.shuffle(listRestaurant)
                             adapter.notifyDataSetChanged()
 
                             rvKuliner.adapter = adapter

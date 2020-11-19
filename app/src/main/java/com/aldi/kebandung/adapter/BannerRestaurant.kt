@@ -13,8 +13,16 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 
 class BannerRestaurant (val listVacation: ArrayList<Restaurant>) : RecyclerView.Adapter<BannerRestaurant.ListViewHolder> () {
+    private val limit = 4
+
     override fun getItemCount(): Int {
-        return listVacation.size
+        if(listVacation.size > limit){
+            return limit;
+        }
+        else
+        {
+            return listVacation.size;
+        }
     }
 
     private lateinit var onItemClickCallback: OnItemClickCallback

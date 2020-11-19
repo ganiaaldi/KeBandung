@@ -12,9 +12,19 @@ import com.aldi.kebandung.model.Wisata
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 
+
+
 class BannerWisata (val listVacation: ArrayList<Wisata>) : RecyclerView.Adapter<BannerWisata.ListViewHolder> () {
+    private val limit = 4
+
     override fun getItemCount(): Int {
-        return listVacation.size
+        if(listVacation.size > limit){
+            return limit;
+        }
+        else
+        {
+            return listVacation.size;
+        }
     }
 
     private lateinit var onItemClickCallback: OnItemClickCallback
