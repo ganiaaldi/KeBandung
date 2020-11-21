@@ -292,7 +292,7 @@ class CreateDestination : Fragment(){
                 .addMultipartParameter("nama_daerah",selectedSpinnerr.toString())
                 .addMultipartParameter("alamat_lengkap",inputAlamatLengkap.text.toString())
                 .addMultipartParameter("detail",inputDetail.text.toString())
-                .addMultipartParameter("nama_kategori_wisata",selectedSpinner.toString())
+                .addMultipartParameter("nama_kategori_wisata",selectedSpinnerrr.toString())
                 .addMultipartParameter("jam_buka",jamBukaOutput)
                 .addMultipartParameter("jam_tutup",jamTutupOutput)
                 .addMultipartParameter("harga",inputHarga.text.toString())
@@ -326,17 +326,22 @@ class CreateDestination : Fragment(){
                     }
                 })
         } else if(selectedSpinner == "Tempat Kuliner"){
-            AndroidNetworking.post(Endpoint.CREATERESTAURANT)
-                .addBodyParameter("nama_restaurant",inputDestinasi.text.toString())
-                .addBodyParameter("nama_daerah",selectedSpinner.toString())
-                .addBodyParameter("alamat_lengkap",inputAlamatLengkap.text.toString())
-                .addBodyParameter("detail",inputDetail.text.toString())
-                .addBodyParameter("nama_kategori_kuliner",selectedSpinnerrr.toString())
-                .addBodyParameter("jam_buka",jamBukaOutput)
-                .addBodyParameter("jam_tutup",jamTutupOutput)
-                .addBodyParameter("gambar_restaurant","")
+            AndroidNetworking.upload(Endpoint.CREATERESTAURANT)
+                .addMultipartFile("gambar",gambarDestinasi)
+                .addMultipartParameter("nama_restaurant",inputDestinasi.text.toString())
+                .addMultipartParameter("nama_daerah",selectedSpinnerr.toString())
+                .addMultipartParameter("alamat_lengkap",inputAlamatLengkap.text.toString())
+                .addMultipartParameter("detail",inputDetail.text.toString())
+                .addMultipartParameter("nama_kategori_kuliner",selectedSpinnerrr.toString())
+                .addMultipartParameter("jam_buka",jamBukaOutput)
+                .addMultipartParameter("jam_tutup",jamTutupOutput)
+                .addMultipartParameter("gambar_restaurant","")
                 .setPriority(Priority.MEDIUM)
                 .build()
+                .setUploadProgressListener { bytesUploaded, totalBytes ->
+                    // do anything with progress
+                    Log.d("responce_app", bytesUploaded.toString())
+                }
                 .getAsJSONObject(object : JSONObjectRequestListener {
 
                     override fun onResponse(response: JSONObject?) {
@@ -360,17 +365,22 @@ class CreateDestination : Fragment(){
                     }
                 })
         } else{
-            AndroidNetworking.post(Endpoint.CREATEHOTEL)
-                .addBodyParameter("nama_hotel",inputDestinasi.text.toString())
-                .addBodyParameter("nama_daerah",selectedSpinner.toString())
-                .addBodyParameter("alamat_lengkap",inputAlamatLengkap.text.toString())
-                .addBodyParameter("detail",inputDetail.text.toString())
-                .addBodyParameter("harga",inputHargaa.text.toString())
-                .addBodyParameter("jumlah_kamar",inputJumlahKamar.text.toString())
-                .addBodyParameter("fasilitas",inputFasilitas.text.toString())
-                .addBodyParameter("gambar_hotel","")
+            AndroidNetworking.upload(Endpoint.CREATEHOTEL)
+                .addMultipartFile("gambar",gambarDestinasi)
+                .addMultipartParameter("nama_hotel",inputDestinasi.text.toString())
+                .addMultipartParameter("nama_daerah",selectedSpinnerr.toString())
+                .addMultipartParameter("alamat_lengkap",inputAlamatLengkap.text.toString())
+                .addMultipartParameter("detail",inputDetail.text.toString())
+                .addMultipartParameter("harga",inputHargaa.text.toString())
+                .addMultipartParameter("jumlah_kamar",inputJumlahKamar.text.toString())
+                .addMultipartParameter("fasilitas",inputFasilitas.text.toString())
+                .addMultipartParameter("gambar_hotel","")
                 .setPriority(Priority.MEDIUM)
                 .build()
+                .setUploadProgressListener { bytesUploaded, totalBytes ->
+                    // do anything with progress
+                    Log.d("responce_app", bytesUploaded.toString())
+                }
                 .getAsJSONObject(object : JSONObjectRequestListener {
 
                     override fun onResponse(response: JSONObject?) {

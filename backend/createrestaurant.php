@@ -7,13 +7,13 @@ $detail = $_POST['detail'];
 $nama_kategori_kuliner = $_POST['nama_kategori_kuliner'];
 $jam_buka = $_POST['jam_buka'];
 $jam_tutup = $_POST['jam_tutup'];
- $gambar_restaurant   = $_FILES['gambar_restaurant']['name'];
- $tmp   = $_FILES['gambar_restaurant']['tmp_name'];
- $path = "images/".$gambar_restaurant;
- if($gambar_restaurant == null){
+$gambar_restaurant = $_FILES['gambar']['name'];
+$gambar = $_FILES['gambar']['name'];
+ $tmp   = $_FILES['gambar']['tmp_name'];
+ $path = "images/".$gambar;
+if($gambar_restaurant == null){
   $gambar_restaurant = "icon2.png";
  }
-
  if(move_uploaded_file($tmp, $path)){
 if(!$nama_restaurant || !$nama_daerah || !$alamat_lengkap || !$detail|| !$nama_kategori_kuliner
  || !$jam_buka || !$jam_tutup)

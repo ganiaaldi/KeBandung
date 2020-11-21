@@ -7,10 +7,11 @@ $detail= $_POST['detail'];
 $harga = $_POST['harga'];
 $jumlah_kamar = $_POST['jumlah_kamar'];
 $fasilitas = $_POST['fasilitas'];
-$gambar_hotel   = $_FILES['gambar_hotel']['name'];
- $tmp   = $_FILES['gambar_hotel']['tmp_name'];
- $path = "images/".$gambar_hotel;
- if($gambar_hotel == null){
+$gambar_hotel = $_FILES['gambar']['name'];
+$gambar = $_FILES['gambar']['name'];
+ $tmp   = $_FILES['gambar']['tmp_name'];
+ $path = "images/".$gambar;
+if($gambar_hotel == null){
   $gambar_hotel = "icon2.png";
  }
  if(move_uploaded_file($tmp, $path)){
