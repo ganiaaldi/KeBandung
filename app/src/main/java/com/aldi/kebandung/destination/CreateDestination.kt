@@ -2,12 +2,11 @@ package com.aldi.kebandung.destination
 
 
 import android.Manifest
-import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.ProgressDialog
-import android.app.TimePickerDialog
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -15,28 +14,22 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
-import android.widget.Toast
+import android.widget.*
 import androidx.core.view.isVisible
 
 import com.aldi.kebandung.R
 import kotlinx.android.synthetic.main.fragment_create_destination.*
-import android.widget.TimePicker
-import androidx.activity.addCallback
-import androidx.core.app.ActivityCompat.startActivityForResult
 import androidx.core.content.ContextCompat.checkSelfPermission
-import androidx.navigation.findNavController
+import androidx.core.net.toFile
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.ui.navigateUp
 import com.aldi.kebandung.etc.Endpoint
 import com.androidnetworking.AndroidNetworking
 import com.androidnetworking.common.Priority
 import com.androidnetworking.error.ANError
 import com.androidnetworking.interfaces.JSONObjectRequestListener
-import kotlinx.android.synthetic.main.fragment_create_destination.view.*
 import org.json.JSONObject
-import java.text.SimpleDateFormat
+import java.io.File
+import java.io.IOException
 import java.util.*
 
 
@@ -53,6 +46,7 @@ class CreateDestination : Fragment(){
     var selectedSpinnerrr : String? = null
     var jamBukaOutput : String? = null
     var jamTutupOutput : String? = null
+    var gambarDestinasi : File? = null
     //var listDaerah = ArrayList<Daerah>()
 
     override fun onCreateView(
@@ -281,7 +275,8 @@ class CreateDestination : Fragment(){
             else{
                 Toast.makeText(context,"Masukan gambar terlebih dahulu",Toast.LENGTH_SHORT).show()
             }**/
-            fanCreateDestination()
+           fanCreateDestination()
+          // Toast.makeText(context,"$gambarDestinasi",Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -290,18 +285,24 @@ class CreateDestination : Fragment(){
         loading.setMessage("Menambahkan destinasi..")
         loading.show()
         if (selectedSpinner == "Tempat Wisata"){
-            AndroidNetworking.post(Endpoint.CREATEWISATA)
-                .addBodyParameter("nama_wisata",inputDestinasi.text.toString())
-                .addBodyParameter("nama_daerah",selectedSpinner.toString())
-                .addBodyParameter("alamat_lengkap",inputAlamatLengkap.text.toString())
-                .addBodyParameter("detail",inputDetail.text.toString())
-                .addBodyParameter("nama_kategori_wisata",selectedSpinnerr.toString())
-                .addBodyParameter("jam_buka",jamBukaOutput)
-                .addBodyParameter("jam_tutup",jamTutupOutput)
-                .addBodyParameter("harga",inputHarga.text.toString())
-                .addBodyParameter("gambar_wisata","")
+            AndroidNetworking.upload(Endpoint.CREATEWISATA)
+                .addMultipartFile("gambar",gambarDestinasi)
+                //.addMultipartParameter("gambar_wisata",gambarDestinasi.toString())
+                .addMultipartParameter("nama_wisata",inputDestinasi.text.toString())
+                .addMultipartParameter("nama_daerah",selectedSpinnerr.toString())
+                .addMultipartParameter("alamat_lengkap",inputAlamatLengkap.text.toString())
+                .addMultipartParameter("detail",inputDetail.text.toString())
+                .addMultipartParameter("nama_kategori_wisata",selectedSpinner.toString())
+                .addMultipartParameter("jam_buka",jamBukaOutput)
+                .addMultipartParameter("jam_tutup",jamTutupOutput)
+                .addMultipartParameter("harga",inputHarga.text.toString())
+                .addMultipartParameter("gambar_wisata","")
                 .setPriority(Priority.MEDIUM)
                 .build()
+                .setUploadProgressListener { bytesUploaded, totalBytes ->
+                    // do anything with progress
+                    Log.d("responce_app", bytesUploaded.toString())
+                }
                 .getAsJSONObject(object : JSONObjectRequestListener {
 
                     override fun onResponse(response: JSONObject?) {
@@ -425,6 +426,27 @@ class CreateDestination : Fragment(){
                 pickImageFromGallery();
             }
         }
+        uploadPhotoDone.setOnClickListener {
+            uploadPhoto.visibility = View.INVISIBLE
+            uploadPhotoDone.visibility = View.VISIBLE
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+                if (checkSelfPermission(context!!,Manifest.permission.READ_EXTERNAL_STORAGE) ==
+                    PackageManager.PERMISSION_DENIED){
+                    //permission denied
+                    val permissions = arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE);
+                    //show popup to request runtime permission
+                    requestPermissions(permissions, PERMISSION_CODE);
+                }
+                else{
+                    //permission already granted
+                    pickImageFromGallery();
+                }
+            }
+            else{
+                //system OS is < Marshmallow
+                pickImageFromGallery();
+            }
+        }
     }
 
 
@@ -457,6 +479,9 @@ override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out
 override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
     if (resultCode == Activity.RESULT_OK && requestCode == IMAGE_PICK_CODE){
         uploadPhotoDone.setImageURI(data?.data)
+       // val imagePath = data!!.data.toString()
+        //gambarDestinasi = File(imagePath)
+        gambarDestinasi = data!!.data!!.toFile()
     }
 }
 }

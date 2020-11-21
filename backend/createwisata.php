@@ -8,9 +8,10 @@ $nama_kategori_wisata = $_POST['nama_kategori_wisata'];
 $jam_buka = $_POST['jam_buka'];
 $jam_tutup = $_POST['jam_tutup'];
 $harga = $_POST['harga'];
-$gambar_wisata  = $_FILES['gambar_wisata']['name'];
- $tmp   = $_FILES['gambar_wisata']['tmp_name'];
- $path = "images/".$gambar_wisata;
+$gambar_wisata = $_FILES['gambar']['name'];
+$gambar = $_FILES['gambar']['name'];
+ $tmp   = $_FILES['gambar']['tmp_name'];
+ $path = "images/".$gambar;
  if($gambar_wisata == null){
   $gambar_wisata = "icon2.png";
  }
