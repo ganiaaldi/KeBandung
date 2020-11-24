@@ -93,6 +93,12 @@ class LoginFragment : Fragment() {
        //         findNavController().navigateUp()
         //    }
         }
+        tvRegister.setOnClickListener {
+            findNavController().navigate(R.id.registerFragment)
+        }
+        tvForgotPassword.setOnClickListener {
+            findNavController().navigate(R.id.registerFragment)
+        }
     }
 
     fun loginMethod(){
