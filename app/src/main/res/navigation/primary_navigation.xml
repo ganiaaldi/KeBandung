@@ -58,4 +58,5 @@
     </fragment>
     <fragment android:id="@+id/createDestination" android:name="com.aldi.kebandung.destination.CreateDestination"
               android:label="fragment_create_destination" tools:layout="@layout/fragment_create_destination"/>
+    <include app:graph="@navigation/auth_nav"/>
 </navigation>

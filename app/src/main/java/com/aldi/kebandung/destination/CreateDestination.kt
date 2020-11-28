@@ -23,6 +23,7 @@ import androidx.core.content.ContextCompat.checkSelfPermission
 import androidx.core.net.toFile
 import androidx.navigation.fragment.findNavController
 import com.aldi.kebandung.etc.Endpoint
+import com.aldi.kebandung.etc.URIPathHelper
 import com.androidnetworking.AndroidNetworking
 import com.androidnetworking.common.Priority
 import com.androidnetworking.error.ANError
@@ -309,6 +310,7 @@ class CreateDestination : Fragment(){
 
                         loading.dismiss()
                         Toast.makeText(context,response?.getString("message"),Toast.LENGTH_SHORT).show()
+                        findNavController().navigate(R.id.destinationFragment)
 
                         if(response?.getString("message")?.contains("successfully")!!){
                             this@CreateDestination.activity?.finish()
@@ -348,6 +350,7 @@ class CreateDestination : Fragment(){
 
                         loading.dismiss()
                         Toast.makeText(context,response?.getString("message"),Toast.LENGTH_SHORT).show()
+                        findNavController().navigate(R.id.destinationFragment)
 
                         if(response?.getString("message")?.contains("successfully")!!){
                             this@CreateDestination.activity?.finish()
@@ -387,6 +390,7 @@ class CreateDestination : Fragment(){
 
                         loading.dismiss()
                         Toast.makeText(context,response?.getString("message"),Toast.LENGTH_SHORT).show()
+                        findNavController().navigate(R.id.destinationFragment)
 
                         if(response?.getString("message")?.contains("successfully")!!){
                             this@CreateDestination.activity?.finish()
@@ -488,10 +492,19 @@ override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out
 //handle result of picked image
 override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
     if (resultCode == Activity.RESULT_OK && requestCode == IMAGE_PICK_CODE){
-        uploadPhotoDone.setImageURI(data?.data)
-       // val imagePath = data!!.data.toString()
+
+        // val imagePath = data!!.data.toString()
         //gambarDestinasi = File(imagePath)
-        gambarDestinasi = data!!.data!!.toFile()
+        if (Build.VERSION.SDK_INT < 23) {
+            uploadPhotoDone.setImageURI(data?.data)
+            gambarDestinasi = data!!.data!!.toFile()
+        } else{
+            uploadPhotoDone.setImageURI(data!!.data!!)
+            val uriPathHelper = URIPathHelper()
+            val filePath = uriPathHelper.getPath(context!!, data!!.data!!)
+           // Toast.makeText(context, "$filePath", Toast.LENGTH_LONG).show()
+            gambarDestinasi = File(filePath)
+        }
     }
 }
 }

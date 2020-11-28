@@ -52,6 +52,7 @@ class RegisterFragment : Fragment() {
 
                     loading.dismiss()
                     Toast.makeText(context,response?.getString("message"),Toast.LENGTH_SHORT).show()
+                    findNavController().navigate(R.id.loginFragment)
 
                     if(response?.getString("message")?.contains("successfully")!!){
                         this@RegisterFragment.activity?.finish()

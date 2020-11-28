@@ -73,7 +73,7 @@ class AccountFragment : Fragment() {
             AppPreferences.isLogin = false
             preferences.edit().remove("username").apply()
             preferences.edit().remove("password").apply()
-            findNavController().navigate(R.id.authFragment)
+            findNavController().navigate(R.id.auth_nav)
         }
     }
 
