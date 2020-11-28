@@ -20,12 +20,11 @@ if(!$nama_restaurant || !$nama_daerah || !$alamat_lengkap || !$detail|| !$nama_k
 {
   echo json_encode(array('message'=>'form harus terisi semua!'));
 }else{	
-$query = mysqli_query($CON, "INSERT INTO restaurant VALUES ('$no_restaurant','$nama_restaurant','$nama_daerah','$alamat_lengkap',
-'$detail','$nama_kategori_kuliner','$jam_buka','$jam_tutup','$gambar_restaurant')");
+$query = mysqli_query($CON, "INSERT INTO restaurant(nama_restaurant,nama_daerah,alamat_lengkap,detail,nama_kategori_kuliner,jam_buka,jam_tutup,gambar_restaurant) VALUES ('$nama_restaurant','$nama_daerah','$alamat_lengkap','$detail','$nama_kategori_kuliner','$jam_buka','$jam_tutup','$gambar_restaurant')");
 if($query){
-    echo json_encode(array('message'=>'Data restaurant berhasil ditambahkan!'));
+    echo json_encode(array('message'=>'Data tempat kuliner berhasil ditambahkan!'));
   }else{
-    echo json_encode(array('message'=>'Data restaurant gagal ditambahkan!'));
+    echo json_encode(array('message'=>'Data tempat kuliner gagal ditambahkan!'));
   }
 
 }
@@ -37,12 +36,12 @@ if($query){
  {
    echo json_encode(array('message'=>'form harus terisi semua!'));
  }else{	
- $query = mysqli_query($CON, "INSERT INTO restaurant VALUES ('$no_restaurant','$nama_restaurant','$nama_daerah','$alamat_lengkap',
+ $query = mysqli_query($CON, "INSERT INTO restaurant(nama_restaurant,nama_daerah,alamat_lengkap,detail,nama_kategori_kuliner,jam_buka,jam_tutup,gambar_restaurant) VALUES ('$nama_restaurant','$nama_daerah','$alamat_lengkap',
  '$detail','$nama_kategori_kuliner','$jam_buka','$jam_tutup','$gambar_restaurant')");
  if($query){
-     echo json_encode(array('message'=>'Data restaurant berhasil ditambahkan!'));
+     echo json_encode(array('message'=>'Data tempat kuliner berhasil ditambahkan!'));
    }else{
-     echo json_encode(array('message'=>'Data restaurant gagal ditambahkan!'));
+     echo json_encode(array('message'=>'Data tempat kuliner gagal ditambahkan!'));
    }
  
  }

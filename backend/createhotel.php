@@ -21,7 +21,7 @@ if(!$nama_hotel  || !$alamat_lengkap || !$detail || !$nama_daerah
 {
   echo json_encode(array('message'=>'form harus terisi semua!'));
 }else{	
-$query = mysqli_query($CON, "INSERT INTO hotel VALUES ('$no_hotel','$nama_hotel','$nama_daerah','$alamat_lengkap',
+$query = mysqli_query($CON, "INSERT INTO hotel(nama_hotel,nama_daerah,alamat_lengkap,detail,harga,jumlah_kamar,fasilitas,gambar_hotel) VALUES ('$nama_hotel','$nama_daerah','$alamat_lengkap',
 '$detail','$harga','$jumlah_kamar','$fasilitas','$gambar_hotel')");
 if($query){
     echo json_encode(array('message'=>'Data hotel berhasil ditambahkan!'));
@@ -36,7 +36,7 @@ if($query){
 {
   echo json_encode(array('message'=>'form harus terisi semua!'));
 }else{	
-$query = mysqli_query($CON, "INSERT INTO hotel VALUES ('$no_hotel','$nama_hotel','$nama_daerah','$alamat_lengkap',
+$query = mysqli_query($CON, "INSERT INTO hotel(nama_hotel,nama_daerah,alamat_lengkap,detail,harga,jumlah_kamar,fasilitas,gambar_hotel) VALUES ('$nama_hotel','$nama_daerah','$alamat_lengkap',
 '$detail','$harga','$jumlah_kamar','$fasilitas','$gambar_hotel')");
 if($query){
     echo json_encode(array('message'=>'Data hotel berhasil ditambahkan!'));

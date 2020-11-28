@@ -499,9 +499,12 @@ override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) 
             uploadPhotoDone.setImageURI(data?.data)
             gambarDestinasi = data!!.data!!.toFile()
         } else{
-            uploadPhotoDone.setImageURI(data!!.data!!)
+            //uploadPhotoDone.setImageURI(data!!.data!!)
             val uriPathHelper = URIPathHelper()
             val filePath = uriPathHelper.getPath(context!!, data!!.data!!)
+            val uriri : Uri
+            uriri = Uri.parse(filePath)
+            uploadPhotoDone.setImageURI(uriri)
            // Toast.makeText(context, "$filePath", Toast.LENGTH_LONG).show()
             gambarDestinasi = File(filePath)
         }
